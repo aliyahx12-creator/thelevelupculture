@@ -99,8 +99,8 @@
   .founder-inner { display: grid; grid-template-columns: 420px 1fr; gap: 80px; align-items: start; }
   .founder-img-wrap { position: relative; border-radius: 8px; overflow: hidden; }
   .founder-img-wrap img { width: 100%; height: 580px; object-fit: cover; object-position: center top; }
-  .founder-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(5,0,15,0.98) 0%, rgba(5,0,15,0.85) 40%, transparent 75%); padding: 32px; }
-  .founder-img-quote { font-family: var(--font-body); font-style: italic; font-size: 16px; line-height: 1.6; color: var(--purple); }
+  .founder-img-overlay { padding: 20px 0 0 0; }
+  .founder-img-quote { font-family: var(--font-body); font-style: italic; font-size: 16px; line-height: 1.6; color: var(--ivory); }
   .founder-img-attr { margin-top: 10px; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
   .founder-story { font-family: var(--font-body); font-size: 16px; line-height: 1.85; color: rgba(248,246,242,0.75); }
   .founder-story p + p { margin-top: 18px; }
@@ -392,8 +392,10 @@
 <!-- FOUNDER -->
 <section class="founder" id="founder">
   <div class="container founder-inner">
-    <div class="founder-img-wrap" data-reveal>
-      <img src="https://res.cloudinary.com/dpezjkpka/image/upload/f_auto,q_auto/20250720_145706_IMG_9951_jumniz" alt="Aliyah — Founder, The Level Up Culture" loading="lazy">
+    <div data-reveal>
+      <div class="founder-img-wrap">
+        <img src="https://res.cloudinary.com/dpezjkpka/image/upload/f_auto,q_auto/20250720_145706_IMG_9951_jumniz" alt="Aliyah — Founder, The Level Up Culture" loading="lazy">
+      </div>
       <div class="founder-img-overlay">
         <p class="founder-img-quote">"I looked for this community before I built it. I didn't find it. So I built it."</p>
         <p class="founder-img-attr">Aliyah — Founder, The Level Up Culture</p>
