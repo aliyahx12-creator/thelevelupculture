@@ -103,6 +103,72 @@
   .pillar-tile-desc { font-family: var(--font-body); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
   .pillars-note { text-align: center; margin-top: 40px; font-family: var(--font-body); font-style: italic; font-size: 14px; color: rgba(248,246,242,0.5); }
 
+  /* START YOUR LEVEL UP */
+  .start-section { padding: 90px 0 100px; background: var(--black); }
+  .start-header { text-align: center; margin-bottom: 56px; }
+  .start-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .start-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r); padding: 32px 26px; display: flex; flex-direction: column; transition: transform 0.2s var(--ease), border-color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+  .start-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--purple), transparent); opacity: 0; transition: opacity 0.2s; }
+  .start-card:hover { transform: translateY(-4px); border-color: rgba(110,68,255,0.35); }
+  .start-card:hover::before { opacity: 1; }
+  .start-card-icon { font-size: 26px; margin-bottom: 18px; }
+  .start-card-title { font-size: 16px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ivory); margin-bottom: 12px; }
+  .start-card-desc { font-family: var(--font-body); font-size: 13.5px; line-height: 1.65; color: var(--muted); flex: 1; margin-bottom: 22px; }
+  .start-card-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--purple); transition: gap 0.2s; align-self: flex-start; }
+  .start-card:hover .start-card-cta { gap: 10px; }
+  .start-card-cta.muted { color: var(--gold); }
+
+  /* OUR PRINCIPLES */
+  .principles-section { padding: 100px 0; background: linear-gradient(to bottom, var(--black), var(--plum) 50%, var(--black)); }
+  .principles-header { text-align: center; margin-bottom: 56px; }
+  .principles-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .principle-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r); padding: 30px 20px; text-align: center; transition: transform 0.2s var(--ease), border-color 0.2s; }
+  .principle-card:hover { transform: translateY(-4px); border-color: rgba(200,164,77,0.4); }
+  .principle-number { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
+  .principle-text { font-size: 14px; font-weight: 900; letter-spacing: 0.3px; text-transform: uppercase; color: var(--ivory); line-height: 1.4; }
+
+  /* FEATURED PRODUCT */
+  .featured-product { padding: 100px 0; background: var(--black); }
+  .fp-inner { background: linear-gradient(135deg, var(--plum), #1a0a3d); border: 1px solid rgba(110,68,255,0.25); border-radius: 12px; padding: 70px; position: relative; overflow: hidden; }
+  .fp-inner::before { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(200,164,77,0.15) 0%, transparent 70%); pointer-events: none; }
+  .fp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .fp-image-placeholder { aspect-ratio: 4/5; background: rgba(13,13,13,0.6); border: 1px dashed rgba(200,164,77,0.4); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .fp-image-icon { font-size: 56px; opacity: 0.4; }
+  .fp-image-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .fp-content { position: relative; z-index: 1; }
+  .fp-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,164,77,0.4); padding: 5px 14px; border-radius: 3px; margin-bottom: 20px; }
+  .fp-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 900; line-height: 1.1; letter-spacing: -1px; text-transform: uppercase; color: var(--ivory); margin-bottom: 18px; }
+  .fp-title span { color: var(--purple); display: block; }
+  .fp-desc { font-family: var(--font-body); font-size: 15.5px; line-height: 1.75; color: rgba(248,246,242,0.7); margin-bottom: 32px; }
+  .fp-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* THE FUTURE WE'RE BUILDING */
+  .future-section { padding: 100px 0; background: var(--charcoal); }
+  .future-header { text-align: center; margin-bottom: 56px; }
+  .future-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .future-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r); padding: 30px 26px; transition: transform 0.2s var(--ease), border-color 0.2s; }
+  .future-card:hover { transform: translateY(-3px); border-color: rgba(110,68,255,0.25); }
+  .future-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 10px; }
+  .future-card-icon { font-size: 24px; }
+  .future-status { font-size: 8.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 9px; border-radius: 3px; white-space: nowrap; }
+  .status-development { background: rgba(110,68,255,0.15); color: #a68eff; }
+  .status-launching { background: rgba(200,164,77,0.18); color: var(--gold); }
+  .status-foundation { background: rgba(248,246,242,0.08); color: var(--ivory); }
+  .future-card-title { font-size: 15px; font-weight: 900; letter-spacing: 0.3px; text-transform: uppercase; color: var(--ivory); margin-bottom: 10px; }
+  .future-card-desc { font-family: var(--font-body); font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+  /* LEVEL UP LETTER (replaces old CTA email section) */
+  .letter-section { padding: 120px 0; text-align: center; background: var(--black); position: relative; overflow: hidden; }
+  .letter-section::before { content: 'PRESS START ANYWAY.'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: clamp(40px, 10vw, 130px); font-weight: 900; letter-spacing: -3px; text-transform: uppercase; color: rgba(110,68,255,0.04); pointer-events: none; white-space: nowrap; }
+  .letter-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+  .letter-headline { font-size: clamp(32px, 5vw, 56px); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; text-transform: uppercase; color: var(--ivory); }
+  .letter-headline span { color: var(--purple); }
+  .letter-body { font-family: var(--font-body); font-size: 16.5px; line-height: 1.75; color: rgba(248,246,242,0.65); margin: 22px 0 44px; }
+
+  /* FOUNDER EXPANSION TAGS */
+  .founder-roles { display: flex; gap: 10px; flex-wrap: wrap; margin: 24px 0 0; }
+  .founder-role-tag { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,164,77,0.35); padding: 6px 14px; border-radius: 3px; }
+
   /* FOUNDER */
   .founder { padding: 100px 0; position: relative; overflow: hidden; }
   .founder::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(110,68,255,0.06), transparent); pointer-events: none; }
@@ -267,6 +333,11 @@
     .founder-inner { grid-template-columns: 1fr; gap: 40px; }
     .for-you-grid { grid-template-columns: 1fr 1fr; }
     .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .start-grid { grid-template-columns: 1fr 1fr; }
+    .principles-grid { grid-template-columns: 1fr 1fr; }
+    .future-grid { grid-template-columns: 1fr 1fr; }
+    .fp-grid { grid-template-columns: 1fr; gap: 40px; }
+    .fp-inner { padding: 40px 24px; }
     .blog-grid { grid-template-columns: 1fr; }
     .blog-featured { grid-column: span 1; grid-template-columns: 1fr; }
     .blog-featured-img { min-height: 200px; }
@@ -280,6 +351,9 @@
   @media (max-width: 600px) {
     .for-you-grid { grid-template-columns: 1fr; }
     .footer-nav { grid-template-columns: 1fr; }
+    .start-grid { grid-template-columns: 1fr; }
+    .principles-grid { grid-template-columns: 1fr; }
+    .future-grid { grid-template-columns: 1fr; }
   }
   .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: var(--black); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
   .mobile-menu.open { display: flex; }
@@ -303,10 +377,10 @@
     </a>
     <div class="nav-links">
       <a href="#mission">Mission</a>
-      <a href="#pillars">Pillars</a>
+      <a href="#principles">Principles</a>
       <a href="#founder">Founder</a>
       <a href="#blog" onclick="showHome()">Blog</a>
-      <a href="#product">Presence Pack</a>
+      <a href="#featured-product">Shop</a>
     </div>
     <a href="#join" class="nav-cta">Press Start</a>
     <div class="nav-burger" id="burger" onclick="toggleMenu()">
@@ -318,10 +392,10 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()">✕</button>
   <a href="#mission" onclick="toggleMenu()">Mission</a>
-  <a href="#pillars" onclick="toggleMenu()">Pillars</a>
+  <a href="#principles" onclick="toggleMenu()">Principles</a>
   <a href="#founder" onclick="toggleMenu()">Founder</a>
   <a href="#blog" onclick="toggleMenu();showHome()">Blog</a>
-  <a href="#product" onclick="toggleMenu()">Presence Pack</a>
+  <a href="#featured-product" onclick="toggleMenu()">Shop</a>
   <a href="#join" onclick="toggleMenu()" style="color:var(--purple)">Press Start</a>
 </div>
 
@@ -375,6 +449,43 @@
     <span class="marquee-item">Built to Level <span class="marquee-dot">◆</span></span>
   </div>
 </div>
+
+<!-- START YOUR LEVEL UP -->
+<section class="start-section" id="start">
+  <div class="container">
+    <div class="start-header" data-reveal>
+      <div class="section-eyebrow">Where to Begin</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Start Your<br><em>Level Up.</em></h2>
+    </div>
+    <div class="start-grid">
+      <div class="start-card" data-reveal>
+        <div class="start-card-icon">🧠</div>
+        <div class="start-card-title">Mindset</div>
+        <div class="start-card-desc">Build confidence, resilience, and intentional habits.</div>
+        <a href="#pillars" class="start-card-cta">Explore →</a>
+      </div>
+      <div class="start-card" data-reveal data-reveal-delay="1">
+        <div class="start-card-icon">✨</div>
+        <div class="start-card-title">Lifestyle</div>
+        <div class="start-card-desc">Systems, routines, productivity, creativity, and intentional living.</div>
+        <a href="#pillars" class="start-card-cta">Discover →</a>
+      </div>
+      <div class="start-card" data-reveal data-reveal-delay="2">
+        <div class="start-card-icon">💜</div>
+        <div class="start-card-title">Community</div>
+        <div class="start-card-desc">Find people committed to growing together.</div>
+        <a href="#join" class="start-card-cta">Join Us →</a>
+      </div>
+      <div class="start-card" data-reveal data-reveal-delay="3">
+        <div class="start-card-icon">🛍️</div>
+        <div class="start-card-title">Shop</div>
+        <div class="start-card-desc">Journals, apparel, and tools designed to support intentional growth.</div>
+        <a href="#featured-product" class="start-card-cta muted">Coming Soon →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- MISSION -->
 <section class="mission" id="mission">
@@ -453,18 +564,58 @@
       <div data-reveal><div class="section-eyebrow">The Founder Story</div><span class="gold-line"></span></div>
       <h2 class="section-headline" data-reveal data-reveal-delay="1">Why I Built the Space<br><em>I Couldn't Find.</em></h2>
       <div class="founder-story" data-reveal data-reveal-delay="2">
-        <p>I started gaming at 31. I had no idea what I was doing. I felt out of place more than once.</p>
-        <p>I searched for a space where a Black woman who started gaming as a mom of four — with a full life already in motion — could belong without having to justify her presence.</p>
+        <p>Before any of this, I was a teacher. I spent my days helping other people believe they could grow, learn, and become more than they thought possible — and somewhere along the way I forgot to ask myself the same question.</p>
+        <p>I started gaming at 31. Wife. Mom of four boys. A full, busy, already-stretched life. I had no idea what I was doing. I felt out of place more than once.</p>
+        <p>I searched for a space where a Black woman like me — starting something new later, with a life already in motion — could belong without having to justify her presence.</p>
         <p><strong>I didn't find it. So I built it.</strong></p>
-        <p>Somewhere in the process of learning, failing, trying again, and showing up in a space that wasn't built for me — I grew. Not as a gamer. As a person.</p>
+        <p>Somewhere in the process of learning, failing, trying again, and showing up in a space that wasn't built for me — I grew. Not as a gamer. As a person. As the same teacher who used to tell her students that confidence is built, not born — finally taking her own advice.</p>
         <p>And that's when I realized gaming was never really the destination. It was the doorway. The thing that proved confidence isn't something you wait to feel — it's something you build, one uncomfortable step at a time, in any room you decide to walk into.</p>
-        <p>That discovery became bigger than one hobby. The Level Up Culture grew into a space for mindset, lifestyle, creativity, community — gaming included, but no longer the whole story.</p>
+        <p>That discovery became bigger than one hobby. The Level Up Culture grew into a space for mindset, lifestyle, creativity, community — gaming included, but no longer the whole story. I'm still a teacher at heart. Still a wife and a mom of four navigating a full life. Now I'm also a builder — of a brand, a community, and a version of myself I'm proud to keep becoming.</p>
         <p>This brand is still rooted in my lived experience as a Black woman who found her confidence through growth. That part never changes. But the invitation has grown wider — to anyone who believes in growth, confidence, community, and living life on purpose.</p>
+      </div>
+      <div class="founder-roles" data-reveal data-reveal-delay="2">
+        <span class="founder-role-tag">Teacher</span>
+        <span class="founder-role-tag">Wife</span>
+        <span class="founder-role-tag">Mom of Four</span>
+        <span class="founder-role-tag">Builder</span>
       </div>
       <div class="founder-phrases" data-reveal data-reveal-delay="3">
         <div class="phrase-line">Press Start Anyway.</div>
         <div class="phrase-line gold">Growth Is the Standard.</div>
         <div class="phrase-line">Presence Requires No Permission.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PRINCIPLES -->
+<section class="principles-section" id="principles">
+  <div class="container">
+    <div class="principles-header" data-reveal>
+      <div class="section-eyebrow">What We Stand On</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Our <em>Principles.</em></h2>
+    </div>
+    <div class="principles-grid">
+      <div class="principle-card" data-reveal>
+        <div class="principle-number">01</div>
+        <div class="principle-text">Growth Is the Standard.</div>
+      </div>
+      <div class="principle-card" data-reveal data-reveal-delay="1">
+        <div class="principle-number">02</div>
+        <div class="principle-text">Presence Requires No Permission.</div>
+      </div>
+      <div class="principle-card" data-reveal data-reveal-delay="2">
+        <div class="principle-number">03</div>
+        <div class="principle-text">Press Start Anyway.</div>
+      </div>
+      <div class="principle-card" data-reveal data-reveal-delay="3">
+        <div class="principle-number">04</div>
+        <div class="principle-text">Confidence Is Built Through Action.</div>
+      </div>
+      <div class="principle-card" data-reveal data-reveal-delay="4">
+        <div class="principle-number">05</div>
+        <div class="principle-text">We Build the Space We Once Searched For.</div>
       </div>
     </div>
   </div>
@@ -551,6 +702,31 @@
   </div>
 </section>
 
+<!-- FEATURED PRODUCT -->
+<section class="featured-product" id="featured-product">
+  <div class="container">
+    <div class="fp-inner">
+      <div class="fp-grid">
+        <div class="fp-image-placeholder" data-reveal>
+          <div class="fp-image-icon">📓</div>
+          <div class="fp-image-label">Product Image Coming Soon</div>
+        </div>
+        <div class="fp-content">
+          <div data-reveal>
+            <div class="fp-badge">Featured Product</div>
+          </div>
+          <h2 class="fp-title" data-reveal data-reveal-delay="1">The<br><span>Press Start Anyway</span> Journal</h2>
+          <p class="fp-desc" data-reveal data-reveal-delay="2">A guided journal built for intentional growth — mindset prompts, habit tracking, and reflection pages designed to help you become the person you're working toward, one page at a time. Part of the Foundation Collection.</p>
+          <div class="fp-actions" data-reveal data-reveal-delay="3">
+            <a href="#join" class="btn-ghost">Coming Soon</a>
+            <a href="#join" class="btn-primary">Join Waitlist →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRESENCE PACK -->
 <section class="product" id="product">
   <div class="container">
@@ -582,17 +758,74 @@
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="join">
-  <div class="cta-inner">
-    <div data-reveal><div class="tag" style="margin-bottom:32px;">Welcome to the Culture</div></div>
-    <h2 class="cta-headline" data-reveal data-reveal-delay="1"><span>Press Start</span><br>Anyway.</h2>
-    <p class="cta-body" data-reveal data-reveal-delay="2">You don't need to have it figured out. You don't need to have been here from the start. Join the community that was built with you already in mind.</p>
-    <div class="cta-actions" data-reveal data-reveal-delay="3">
-      <a href="https://discord.gg/ZDWzYahgC" target="_blank" class="btn-primary">Join Our Discord</a>
-      <a href="https://www.youtube.com/@Thelevelupculture" target="_blank" class="btn-ghost">Watch on YouTube</a>
+<!-- THE FUTURE WE'RE BUILDING -->
+<section class="future-section" id="future">
+  <div class="container">
+    <div class="future-header" data-reveal>
+      <div class="section-eyebrow">What's Ahead</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">The Future<br>We're <em>Building.</em></h2>
     </div>
-    <div class="mc-email-form" data-reveal data-reveal-delay="4">
+    <div class="future-grid">
+      <div class="future-card" data-reveal>
+        <div class="future-card-top">
+          <div class="future-card-icon">📓</div>
+          <span class="future-status status-foundation">Part of the Foundation Collection</span>
+        </div>
+        <div class="future-card-title">Journals</div>
+        <div class="future-card-desc">Guided tools for mindset, habits, and intentional reflection.</div>
+      </div>
+      <div class="future-card" data-reveal data-reveal-delay="1">
+        <div class="future-card-top">
+          <div class="future-card-icon">👕</div>
+          <span class="future-status status-launching">Launching Soon</span>
+        </div>
+        <div class="future-card-title">Apparel</div>
+        <div class="future-card-desc">Identity-driven pieces that carry the principles with you.</div>
+      </div>
+      <div class="future-card" data-reveal data-reveal-delay="2">
+        <div class="future-card-top">
+          <div class="future-card-icon">🖥️</div>
+          <span class="future-status status-development">Currently in Development</span>
+        </div>
+        <div class="future-card-title">Workspace</div>
+        <div class="future-card-desc">Tools and setups designed to support how you build and create.</div>
+      </div>
+      <div class="future-card" data-reveal data-reveal-delay="3">
+        <div class="future-card-top">
+          <div class="future-card-icon">💜</div>
+          <span class="future-status status-foundation">Part of the Foundation Collection</span>
+        </div>
+        <div class="future-card-title">Community</div>
+        <div class="future-card-desc">Deeper spaces for connection, accountability, and shared growth.</div>
+      </div>
+      <div class="future-card" data-reveal data-reveal-delay="4">
+        <div class="future-card-top">
+          <div class="future-card-icon">📲</div>
+          <span class="future-status status-development">Currently in Development</span>
+        </div>
+        <div class="future-card-title">Digital Products</div>
+        <div class="future-card-desc">Templates, guides, and resources for intentional living.</div>
+      </div>
+      <div class="future-card" data-reveal data-reveal-delay="5">
+        <div class="future-card-top">
+          <div class="future-card-icon">🎬</div>
+          <span class="future-status status-development">Currently in Development</span>
+        </div>
+        <div class="future-card-title">LUC Studio</div>
+        <div class="future-card-desc">Original content, media, and storytelling from the brand.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN THE LEVEL UP LETTER -->
+<section class="letter-section" id="join">
+  <div class="letter-inner">
+    <div data-reveal><div class="tag" style="margin-bottom:32px;">Welcome to the Culture</div></div>
+    <h2 class="letter-headline" data-reveal data-reveal-delay="1">Join the<br><span>Level Up</span> Letter</h2>
+    <p class="letter-body" data-reveal data-reveal-delay="2">A weekly note about growth, confidence, creativity, and building a life you're proud of.</p>
+    <div class="mc-email-form" data-reveal data-reveal-delay="3">
       <div id="mc_embed_signup">
         <form action="https://thelevelupculture.us10.list-manage.com/subscribe/post?u=8527366354aa3ad68c9fba045&amp;id=816c3702d1&amp;f_id=004cbce0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
           <div id="mc_embed_signup_scroll">
@@ -608,12 +841,16 @@
             </div>
             <div class="optionalParent">
               <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join the Culture &rarr;">
+                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join the Community &rarr;">
               </div>
             </div>
           </div>
         </form>
       </div>
+    </div>
+    <div class="cta-actions" data-reveal data-reveal-delay="4" style="margin-top:36px;">
+      <a href="https://discord.gg/ZDWzYahgC" target="_blank" class="btn-ghost">Join Our Discord</a>
+      <a href="https://www.youtube.com/@Thelevelupculture" target="_blank" class="btn-ghost">Watch on YouTube</a>
     </div>
   </div>
 </section>
