@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collections — The Level Up Culture</title>
+<meta name="description" content="Lifestyle products inspired by intentional growth. Journals, apparel, workspace tools, and digital products from The Level Up Culture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black:    #0D0D0D;
+    --purple:   #6E44FF;
+    --purple-2: #3D2799;
+    --purple-glow: rgba(110,68,255,0.18);
+    --purple-glow-2: rgba(110,68,255,0.08);
+    --ivory:    #F8F6F2;
+    --gold:     #C8A44D;
+    --plum:     #2D173D;
+    --charcoal: #1A1A1A;
+    --muted:    #888;
+    --accent:   #6E44FF; /* overridden per-page for subtle room personality */
+    --font-display: 'Montserrat', sans-serif;
+    --font-body:    'Playfair Display', serif;
+    --r: 6px;
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--ivory); font-family: var(--font-display); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .container { width: min(1160px, 90vw); margin-inline: auto; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; border: 1px solid var(--purple-2); background: var(--purple-glow-2); color: var(--accent); padding: 5px 12px; border-radius: 3px; }
+  .gold-line { display: block; width: 48px; height: 2px; background: var(--gold); border-radius: 1px; margin: 16px 0; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: background 0.3s, backdrop-filter 0.3s; }
+  .nav.scrolled { background: rgba(13,13,13,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1e1e1e; padding: 14px 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-size: 11px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; line-height: 1.2; }
+  .nav-logo span { color: var(--accent); display: block; font-size: 8px; letter-spacing: 2px; margin-top: 2px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+  .nav-links a { color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ivory); }
+  .nav-cta { background: var(--accent); color: white; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 10px 20px; border-radius: 3px; border: none; cursor: pointer; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.85; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav-burger span { width: 24px; height: 2px; background: var(--ivory); }
+
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: var(--black); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 22px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--ivory); transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 28px; cursor: pointer; color: var(--muted); background: none; border: none; }
+
+  /* JOURNEY BAR */
+  .journey-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 99; padding-top: 64px; background: rgba(13,13,13,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid #1a1a1a; transition: padding-top 0.3s; }
+  .nav.scrolled ~ .journey-bar { padding-top: 50px; }
+  .journey-inner { display: flex; align-items: center; gap: 10px; padding: 12px 0; overflow-x: auto; scrollbar-width: none; }
+  .journey-inner::-webkit-scrollbar { display: none; }
+  .journey-step { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
+  .journey-step:hover { color: var(--ivory); }
+  .journey-step.current { color: var(--accent); font-weight: 800; }
+  .journey-sep { color: #333; font-size: 10px; flex-shrink: 0; }
+  .journey-spacer { height: 44px; }
+
+  /* PAGE HERO (pillar pages) */
+  .page-hero { min-height: 70vh; padding: 200px 0 80px; position: relative; overflow: hidden; display: flex; align-items: center; background: radial-gradient(ellipse 70% 60% at 50% 0%, var(--purple-glow) 0%, transparent 65%), var(--black); }
+  .page-hero-inner { text-align: center; max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+  .page-hero-headline { font-size: clamp(40px, 6vw, 78px); font-weight: 900; line-height: 1.02; letter-spacing: -2px; text-transform: uppercase; color: var(--ivory); margin: 24px 0 20px; }
+  .page-hero-headline span { color: var(--accent); }
+  .page-hero-body { font-family: var(--font-body); font-size: 18px; line-height: 1.75; color: rgba(248,246,242,0.72); max-width: 580px; margin: 0 auto; }
+  #particles { position: absolute; inset: 0; pointer-events: none; opacity: 0.4; }
+
+  /* SECTION SHARED */
+  .section-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+  .section-headline { font-size: clamp(26px, 3.5vw, 44px); font-weight: 900; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; margin: 16px 0; }
+  .section-headline em { font-style: normal; color: var(--accent); }
+  .section-body { font-family: var(--font-body); font-size: 16px; line-height: 1.8; color: rgba(248,246,242,0.7); }
+  .section-body p + p { margin-top: 16px; }
+  .section-block { padding: 90px 0; }
+  .section-block.alt { background: var(--charcoal); }
+  .section-block.gradient { background: linear-gradient(to bottom, var(--black), var(--plum) 50%, var(--black)); }
+  .section-header-center { text-align: center; margin-bottom: 56px; }
+
+  /* GENERIC CARD GRID (room sections) */
+  .room-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .room-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .room-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .room-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r); padding: 30px 26px; transition: transform 0.2s var(--ease), border-color 0.2s, background 0.2s; position: relative; overflow: hidden; }
+  .room-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.2s; }
+  .room-card:hover { transform: translateY(-4px); border-color: rgba(110,68,255,0.3); }
+  .room-card:hover::before { opacity: 1; }
+  .room-card-icon { font-size: 26px; margin-bottom: 16px; }
+  .room-card-title { font-size: 15px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ivory); margin-bottom: 10px; }
+  .room-card-desc { font-family: var(--font-body); font-size: 13.5px; line-height: 1.65; color: var(--muted); }
+
+  /* PREMIUM PLACEHOLDER PATTERN — no fake content, honest "in progress" framing */
+  .placeholder-block { border: 1px dashed rgba(255,255,255,0.15); border-radius: var(--r); padding: 48px 32px; text-align: center; background: rgba(255,255,255,0.015); transition: border-color 0.2s; }
+  .placeholder-block:hover { border-color: rgba(110,68,255,0.3); }
+  .placeholder-icon { font-size: 34px; opacity: 0.35; margin-bottom: 18px; }
+  .placeholder-status { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 3px; margin-bottom: 16px; }
+  .status-building { background: rgba(110,68,255,0.15); color: #a68eff; }
+  .status-development { background: rgba(200,164,77,0.15); color: var(--gold); }
+  .status-next { background: rgba(248,246,242,0.07); color: var(--ivory); }
+  .status-more { background: rgba(255,255,255,0.05); color: var(--muted); }
+  .placeholder-title { font-size: 16px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ivory); margin-bottom: 10px; }
+  .placeholder-desc { font-family: var(--font-body); font-size: 13.5px; line-height: 1.7; color: var(--muted); max-width: 420px; margin: 0 auto; }
+
+  .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: white; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 16px 28px; border-radius: 3px; transition: transform 0.2s var(--ease), box-shadow 0.2s; border: none; cursor: pointer; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(110,68,255,0.4); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(248,246,242,0.2); color: var(--ivory); font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 15px 28px; border-radius: 3px; transition: border-color 0.2s, background 0.2s; }
+  .btn-ghost:hover { border-color: var(--accent); background: var(--purple-glow); }
+
+  /* CTA / Letter section reused */
+  .letter-section { padding: 110px 0; text-align: center; background: var(--black); position: relative; overflow: hidden; }
+  .letter-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+  .letter-headline { font-size: clamp(30px, 4.5vw, 50px); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; text-transform: uppercase; color: var(--ivory); }
+  .letter-headline span { color: var(--accent); }
+  .letter-body { font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: rgba(248,246,242,0.65); margin: 20px 0 40px; }
+  .mc-email-form { margin-top: 8px; max-width: 440px; margin-inline: auto; }
+  #mc_embed_signup { background: transparent !important; font-family: var(--font-display) !important; width: 100% !important; }
+  #mc_embed_signup form { padding: 0 !important; }
+  #mc_embed_signup input.email { flex: 1; background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.1) !important; border-right: none !important; color: var(--ivory) !important; font-family: var(--font-display) !important; font-size: 13px !important; padding: 14px 18px !important; border-radius: 3px 0 0 3px !important; outline: none !important; width: 100%; }
+  #mc_embed_signup .button { background: var(--accent) !important; color: white !important; border: none !important; font-family: var(--font-display) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: 2px !important; text-transform: uppercase !important; padding: 14px 20px !important; border-radius: 0 3px 3px 0 !important; cursor: pointer !important; white-space: nowrap !important; }
+  #mc_embed_signup h2, #mc_embed_signup .indicates-required, #mc_embed_signup .mc-field-group label, #mc_embed_signup #mce-responses, #mc_embed_signup .foot p { display: none !important; }
+  #mc_embed_signup_scroll { display: flex; }
+  #mc_embed_signup .mc-field-group { flex: 1; }
+  #mc_embed_signup .optionalParent .foot { display: flex !important; }
+
+  /* FOOTER */
+  .footer { background: var(--charcoal); border-top: 1px solid #1e1e1e; padding: 60px 0 32px; }
+  .footer-inner { display: grid; grid-template-columns: 280px 1fr; gap: 60px; }
+  .footer-logo { font-size: 12px; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; line-height: 1.2; }
+  .footer-logo span { color: var(--accent); font-size: 9px; letter-spacing: 3px; display: block; margin-top: 3px; }
+  .footer-tagline { font-family: var(--font-body); font-size: 13px; font-style: italic; color: var(--muted); margin: 16px 0 24px; line-height: 1.5; }
+  .footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
+  .social-link { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); padding: 6px 12px; border: 1px solid #2a2a2a; border-radius: 3px; transition: color 0.2s, border-color 0.2s; }
+  .social-link:hover { color: var(--accent); border-color: var(--accent); }
+  .footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .footer-col-title { font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ivory); margin-bottom: 16px; }
+  .footer-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ivory); }
+  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid #1e1e1e; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-copy { font-size: 11px; color: var(--muted); }
+  .footer-phrases { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-phrases span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(248,246,242,0.2); }
+
+  [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  [data-reveal].revealed { opacity: 1; transform: translateY(0); }
+  [data-reveal-delay="1"] { transition-delay: 0.1s; }
+  [data-reveal-delay="2"] { transition-delay: 0.2s; }
+  [data-reveal-delay="3"] { transition-delay: 0.3s; }
+  [data-reveal-delay="4"] { transition-delay: 0.4s; }
+
+  @media (max-width: 900px) {
+    .room-grid { grid-template-columns: 1fr 1fr; }
+    .room-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-nav { grid-template-columns: 1fr 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-burger { display: flex; }
+    .page-hero { padding-top: 180px; }
+  }
+  @media (max-width: 600px) {
+    .room-grid, .room-grid.cols-2, .room-grid.cols-4 { grid-template-columns: 1fr; }
+    .footer-nav { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; }
+  }
+</style>
+
+<style>:root { --accent: #C8A44D; }</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">
+      The Level Up Culture
+      <span>Growth Is the Standard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/mindset">Mindset</a>
+      <a href="/lifestyle">Lifestyle</a>
+      <a href="/community">Community</a>
+      <a href="/collections" class="active">Collections</a>
+    </div>
+    <a href="/community#join" class="nav-cta">Press Start</a>
+    <div class="nav-burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="/" onclick="toggleMenu()">Home</a>
+  <a href="/mindset" onclick="toggleMenu()">Mindset</a>
+  <a href="/lifestyle" onclick="toggleMenu()">Lifestyle</a>
+  <a href="/community" onclick="toggleMenu()">Community</a>
+  <a href="/collections" onclick="toggleMenu()" class="active">Collections</a>
+  <a href="/community#join" onclick="toggleMenu()" style="color:var(--accent)">Press Start</a>
+</div>
+<!-- JOURNEY BAR -->
+<div class="journey-bar">
+  <div class="container journey-inner">
+      <a href="/" class="journey-step">Home</a>
+      <span class="journey-sep">→</span>
+      <a href="/mindset" class="journey-step">Mindset</a>
+      <span class="journey-sep">→</span>
+      <a href="/lifestyle" class="journey-step">Lifestyle</a>
+      <span class="journey-sep">→</span>
+      <a href="/community" class="journey-step">Community</a>
+      <span class="journey-sep">→</span>
+      <a href="/collections" class="journey-step current">Collections</a>
+  </div>
+</div>
+<div class="journey-spacer"></div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <canvas id="particles"></canvas>
+  <div class="container page-hero-inner">
+    <div data-reveal><div class="tag">⬡ A Room in the House</div></div>
+    <h1 class="page-hero-headline" data-reveal data-reveal-delay="1">Collections</h1>
+    <p class="page-hero-body" data-reveal data-reveal-delay="2">Not gaming merchandise. Lifestyle products inspired by intentional growth — journals, apparel, workspace tools, and what's ahead.</p>
+  </div>
+</section>
+
+<!-- FEATURED COLLECTION -->
+<section class="section-block">
+  <div class="container">
+    <div class="fp-inner" style="background: linear-gradient(135deg, var(--plum), #1a0a3d); border: 1px solid rgba(200,164,77,0.25); border-radius: 12px; padding: 70px; position: relative; overflow: hidden;">
+      <div class="fp-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;">
+        <div class="fp-image-placeholder" data-reveal style="aspect-ratio:4/5;background:rgba(13,13,13,0.6);border:1px dashed rgba(200,164,77,0.4);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+          <div style="font-size:56px;opacity:0.4;">📓</div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Product Image Coming Soon</div>
+        </div>
+        <div class="fp-content" style="position:relative;z-index:1;">
+          <div data-reveal><div class="fp-badge" style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,164,77,0.4);padding:5px 14px;border-radius:3px;margin-bottom:20px;">Featured Collection</div></div>
+          <h2 class="fp-title" data-reveal data-reveal-delay="1" style="font-size:clamp(28px,3.5vw,42px);font-weight:900;line-height:1.1;letter-spacing:-1px;text-transform:uppercase;color:var(--ivory);margin-bottom:18px;">The<br><span style="color:var(--accent);display:block;">Press Start Anyway</span> Journal</h2>
+          <p class="fp-desc" data-reveal data-reveal-delay="2" style="font-family:var(--font-body);font-size:15.5px;line-height:1.75;color:rgba(248,246,242,0.7);margin-bottom:32px;">A guided journal built for intentional growth — mindset prompts, habit tracking, and reflection pages designed to help you become the person you're working toward, one page at a time. Part of the Foundation Collection.</p>
+          <div class="fp-actions" data-reveal data-reveal-delay="3" style="display:flex;gap:14px;flex-wrap:wrap;">
+            <a href="#join" class="btn-ghost">In Development</a>
+            <a href="#join" class="btn-primary">Join Waitlist →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNALS -->
+<section class="section-block alt">
+  <div class="container">
+    <div class="section-header-center" data-reveal>
+      <div class="section-eyebrow">Reflect &amp; Track</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Journals.</h2>
+    </div>
+    <div class="placeholder-block" data-reveal style="max-width:680px;margin-inline:auto;">
+      <div class="placeholder-icon">📔</div>
+      <span class="placeholder-status status-development">In Development</span>
+      <div class="placeholder-title">The Journal Collection</div>
+      <div class="placeholder-desc">Guided tools for mindset, habits, and intentional reflection — built to help you build a life, not just track a to-do list.</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPAREL -->
+<section class="section-block">
+  <div class="container">
+    <div class="section-header-center" data-reveal>
+      <div class="section-eyebrow">Wear the Standard</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Apparel.</h2>
+    </div>
+    <div class="placeholder-block" data-reveal style="max-width:680px;margin-inline:auto;">
+      <div class="placeholder-icon">👕</div>
+      <span class="placeholder-status status-building">Currently Building</span>
+      <div class="placeholder-title">The Apparel Collection</div>
+      <div class="placeholder-desc">Identity-driven pieces that carry the principles with you — designed as a statement of intentional living, not gaming merchandise.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSPACE -->
+<section class="section-block alt">
+  <div class="container">
+    <div class="section-header-center" data-reveal>
+      <div class="section-eyebrow">Build With Intention</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Workspace.</h2>
+    </div>
+    <div class="placeholder-block" data-reveal style="max-width:680px;margin-inline:auto;">
+      <div class="placeholder-icon">🖥️</div>
+      <span class="placeholder-status status-development">In Development</span>
+      <div class="placeholder-title">The Workspace Collection</div>
+      <div class="placeholder-desc">Tools and setups designed to support how you build and create — whether that's a business, a brand, or a creative practice.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL PRODUCTS -->
+<section class="section-block">
+  <div class="container">
+    <div class="section-header-center" data-reveal>
+      <div class="section-eyebrow">Learn &amp; Grow</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Digital <em>Products.</em></h2>
+    </div>
+    <div class="placeholder-block" data-reveal style="max-width:680px;margin-inline:auto;">
+      <div class="placeholder-icon">📲</div>
+      <span class="placeholder-status status-development">In Development</span>
+      <div class="placeholder-title">Templates, Guides &amp; Resources</div>
+      <div class="placeholder-desc">Digital tools for intentional living — built to be used, not just downloaded and forgotten.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING EXPANSION -->
+<section class="section-block alt">
+  <div class="container">
+    <div class="section-header-center" data-reveal>
+      <div class="section-eyebrow">What's Ahead</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Building <em>Toward.</em></h2>
+    </div>
+    <div class="room-grid cols-4">
+      <div class="room-card" data-reveal><div class="room-card-icon">🗂️</div><div class="room-card-title">Collections</div><div class="room-card-desc">Curated product sets organized by intention, not category.</div></div>
+      <div class="room-card" data-reveal data-reveal-delay="1"><div class="room-card-icon">🎁</div><div class="room-card-title">Bundles</div><div class="room-card-desc">Thoughtfully paired products for a complete experience.</div></div>
+      <div class="room-card" data-reveal data-reveal-delay="2"><div class="room-card-icon">⭐</div><div class="room-card-title">Reviews</div><div class="room-card-desc">Real feedback from real members, once there's real product in hand.</div></div>
+      <div class="room-card" data-reveal data-reveal-delay="3"><div class="room-card-icon">💝</div><div class="room-card-title">Wishlist</div><div class="room-card-desc">Save what speaks to you for when it launches.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTER CTA -->
+<section class="letter-section" id="join">
+  <div class="letter-inner">
+    <div data-reveal><div class="tag" style="margin-bottom:28px;">Be First to Know</div></div>
+    <h2 class="letter-headline" data-reveal data-reveal-delay="1">Join the<br><span>Level Up</span> Letter</h2>
+    <p class="letter-body" data-reveal data-reveal-delay="2">A weekly note about growth, confidence, creativity, and building a life you're proud of — including first access when Collections launch.</p>
+    <div class="mc-email-form" data-reveal data-reveal-delay="3">
+      <div id="mc_embed_signup">
+        <form action="https://thelevelupculture.us10.list-manage.com/subscribe/post?u=8527366354aa3ad68c9fba045&amp;id=816c3702d1&amp;f_id=004cbce0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+          <div id="mc_embed_signup_scroll">
+            <div class="mc-field-group">
+              <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Enter your email address" aria-label="Email address">
+            </div>
+            <div aria-hidden="true" style="position:absolute;left:-5000px;">
+              <input type="text" name="b_8527366354aa3ad68c9fba045_816c3702d1" tabindex="-1" value="">
+            </div>
+            <div class="optionalParent">
+              <div class="foot">
+                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join the Community &rarr;">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">The Level Up Culture<span>Growth Is the Standard</span></div>
+        <p class="footer-tagline">A lifestyle brand built on confidence, growth, and community — rooted in the lived experience of a Black woman who built the space she once searched for.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/thelevelupculture/" target="_blank" class="social-link">Instagram</a>
+          <a href="https://www.youtube.com/@Thelevelupculture" target="_blank" class="social-link">YouTube</a>
+          <a href="https://www.facebook.com/thelevelupculture" target="_blank" class="social-link">Facebook</a>
+          <a href="https://discord.gg/ZDWzYahgC" target="_blank" class="social-link">Discord</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div><div class="footer-col-title">Ecosystem</div><div class="footer-links"><a href="/mindset">Mindset</a><a href="/lifestyle">Lifestyle</a><a href="/community">Community</a><a href="/collections">Collections</a></div></div>
+        <div><div class="footer-col-title">Brand</div><div class="footer-links"><a href="/#mission">Our Mission</a><a href="/#principles">Our Principles</a><a href="/#founder">Founder Story</a><a href="/#blog">Blog</a></div></div>
+        <div><div class="footer-col-title">Community</div><div class="footer-links"><a href="https://discord.gg/ZDWzYahgC" target="_blank">Discord</a><a href="https://www.instagram.com/thelevelupculture/" target="_blank">Instagram</a><a href="/community#join">Newsletter</a><a href="mailto:hello@thelevelupculture.com">Contact</a></div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 The Level Up Culture. All rights reserved.</p>
+      <div class="footer-phrases"><span>Growth Is the Standard.</span><span>Presence Requires No Permission.</span><span>Press Start Anyway.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+
+  (function() {
+    const canvas = document.getElementById('particles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles;
+    function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+    function Particle() { this.reset(); }
+    Particle.prototype.reset = function() { this.x = Math.random()*W; this.y = Math.random()*H; this.r = Math.random()*1.5+0.5; this.vx = (Math.random()-.5)*.3; this.vy = (Math.random()-.5)*.3; this.a = Math.random()*.6+.1; };
+    Particle.prototype.draw = function() { ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(110,68,255,${this.a})`; ctx.fill(); };
+    Particle.prototype.update = function() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); };
+    function init() { resize(); particles = Array.from({length:60},()=>new Particle()); }
+    function tick() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(tick); }
+    window.addEventListener('resize', resize, {passive:true});
+    init(); tick();
+  })();
+</script>
+</body>
+</html>
