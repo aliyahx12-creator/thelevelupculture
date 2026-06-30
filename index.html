@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Level Up Culture — Presence Requires No Permission</title>
-<meta name="description" content="A media and community brand centered around Black women boldly stepping into gaming spaces — regardless of age, experience, or life stage. Growth Is the Standard.">
+<title>The Level Up Culture — A Lifestyle of Intentional Growth</title>
+<meta name="description" content="A lifestyle brand built on confidence, visibility, growth, representation, and community. Rooted in the lived experience of a Black woman who discovered her own confidence through growth — and built the space she once searched for. Growth Is the Standard.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -92,6 +92,17 @@
   .pillar-card:hover { border-left-color: var(--gold); background: rgba(110,68,255,0.06); }
   .pillar-title { font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ivory); margin-bottom: 6px; }
   .pillar-desc { font-size: 13px; font-family: var(--font-body); color: var(--muted); line-height: 1.6; }
+
+  /* CONTENT PILLARS */
+  .pillars-section { padding: 90px 0; background: var(--black); border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+  .pillars-header { text-align: center; margin-bottom: 56px; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .pillar-tile { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r); padding: 28px 18px; text-align: center; transition: transform 0.2s var(--ease), border-color 0.2s, background 0.2s; }
+  .pillar-tile:hover { transform: translateY(-4px); border-color: rgba(200,164,77,0.4); background: rgba(200,164,77,0.04); }
+  .pillar-tile-icon { font-size: 26px; margin-bottom: 14px; }
+  .pillar-tile-title { font-size: 13px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: var(--ivory); margin-bottom: 8px; }
+  .pillar-tile-desc { font-family: var(--font-body); font-size: 12.5px; line-height: 1.6; color: var(--muted); }
+  .pillars-note { text-align: center; margin-top: 40px; font-family: var(--font-body); font-style: italic; font-size: 14px; color: rgba(248,246,242,0.5); }
 
   /* FOUNDER */
   .founder { padding: 100px 0; position: relative; overflow: hidden; }
@@ -256,6 +267,7 @@
     .mission-inner { grid-template-columns: 1fr; gap: 48px; }
     .founder-inner { grid-template-columns: 1fr; gap: 40px; }
     .for-you-grid { grid-template-columns: 1fr 1fr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
     .blog-grid { grid-template-columns: 1fr; }
     .blog-featured { grid-column: span 1; grid-template-columns: 1fr; }
     .blog-featured-img { min-height: 200px; }
@@ -292,6 +304,7 @@
     </a>
     <div class="nav-links">
       <a href="#mission">Mission</a>
+      <a href="#pillars">Pillars</a>
       <a href="#founder">Founder</a>
       <a href="#blog" onclick="showHome()">Blog</a>
       <a href="#product">Presence Pack</a>
@@ -306,6 +319,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()">✕</button>
   <a href="#mission" onclick="toggleMenu()">Mission</a>
+  <a href="#pillars" onclick="toggleMenu()">Pillars</a>
   <a href="#founder" onclick="toggleMenu()">Founder</a>
   <a href="#blog" onclick="toggleMenu();showHome()">Blog</a>
   <a href="#product" onclick="toggleMenu()">Presence Pack</a>
@@ -320,19 +334,19 @@
   <canvas id="particles"></canvas>
   <div class="container hero-inner">
     <div>
-      <div data-reveal><div class="tag">⬡ A Media &amp; Community Brand</div></div>
+      <div data-reveal><div class="tag">⬡ A Lifestyle &amp; Community Brand</div></div>
       <h1 class="hero-headline" data-reveal data-reveal-delay="1">
         <span class="l1">We Build</span>
         <span class="l2">the Space</span>
         <span class="l3">We Once Searched For.</span>
       </h1>
-      <p class="hero-body" data-reveal data-reveal-delay="2">Gaming is not just a hobby here. It's a vehicle for confidence, visibility, and personal growth. Built for Black women who press start anyway — regardless of age, experience, or life stage.</p>
+      <p class="hero-body" data-reveal data-reveal-delay="2">This is a space for confidence, visibility, and intentional growth — in mindset, lifestyle, creativity, community, and yes, gaming too. Built from the lived experience of a Black woman who pressed start anyway, and built for anyone ready to do the same.</p>
       <div class="hero-actions" data-reveal data-reveal-delay="3">
         <a href="#join" class="btn-primary">Join the Community →</a>
         <a href="#mission" class="btn-ghost">Our Mission</a>
       </div>
       <div class="hero-stats" data-reveal data-reveal-delay="4">
-        <div class="stat-item"><div class="stat-num">31</div><div class="stat-label">Age She Started</div></div>
+        <div class="stat-item"><div class="stat-num">31</div><div class="stat-label">Age It All Began</div></div>
         <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Sons</div></div>
         <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">No Age Limit on Growth</div></div>
       </div>
@@ -372,20 +386,59 @@
   <div class="container mission-inner">
     <div>
       <div data-reveal><div class="section-eyebrow">Why We Exist</div><span class="gold-line"></span></div>
-      <h2 class="section-headline" data-reveal data-reveal-delay="1">Not a Gaming Tips Brand.<br>A <em>Culture</em> Brand.</h2>
+      <h2 class="section-headline" data-reveal data-reveal-delay="1">Not a Tips-and-Tricks Brand.<br>A <em>Culture</em> Brand.</h2>
       <div class="section-body" data-reveal data-reveal-delay="2">
-        <p>This is not about kill streaks or rankings. The gap we're filling is bigger than that.</p>
-        <p>It's the one where Black women show up to gaming spaces and are made to feel like they arrived too late, don't belong, or have to earn their place.</p>
-        <p>It's the one where "gamer" has a default image — and it doesn't look like us. We're filling that gap. Gaming is the vehicle. Confidence, visibility, and personal growth are the destination.</p>
+        <p>This is not about checklists or quick fixes. The gap we're filling is bigger than that.</p>
+        <p>It's the one where people show up to new spaces — a hobby, a goal, a version of themselves they're still becoming — and are made to feel like they arrived too late, don't belong, or have to earn their place.</p>
+        <p>It's the one where confidence is treated like something you're either born with or without, instead of something built through action. We're filling that gap. Growth is the vehicle. Confidence, visibility, and intentional living are the destination.</p>
       </div>
     </div>
     <div>
-      <div class="pillar-card" data-reveal><div class="pillar-title">Confidence</div><div class="pillar-desc">Built through action, not waiting until you feel ready. Every step forward is evidence you can handle more than you thought.</div></div>
-      <div class="pillar-card" data-reveal data-reveal-delay="1"><div class="pillar-title">Visibility</div><div class="pillar-desc">Presence requires no permission. We center Black women — in gaming, in conversations, in culture — unapologetically.</div></div>
+      <div class="pillar-card" data-reveal><div class="pillar-title">Confidence</div><div class="pillar-desc">Built through action, not waiting until you feel ready. Every step forward — in any area of life — is evidence you can handle more than you thought.</div></div>
+      <div class="pillar-card" data-reveal data-reveal-delay="1"><div class="pillar-title">Visibility</div><div class="pillar-desc">Presence requires no permission. We center Black women at the heart of this brand — in every room, every goal, every season of becoming — unapologetically.</div></div>
       <div class="pillar-card" data-reveal data-reveal-delay="2"><div class="pillar-title">Growth</div><div class="pillar-desc">Progress over perfection. Your timeline belongs to you — not the internet, not the industry, not anyone's expectations.</div></div>
-      <div class="pillar-card" data-reveal data-reveal-delay="3"><div class="pillar-title">Representation</div><div class="pillar-desc">Representation changes culture. When you see yourself reflected — really reflected — something shifts. That's the work.</div></div>
+      <div class="pillar-card" data-reveal data-reveal-delay="3"><div class="pillar-title">Representation</div><div class="pillar-desc">Representation changes culture. When you see yourself reflected — really reflected, in any space you enter — something shifts. That's the work.</div></div>
       <div class="pillar-card" data-reveal data-reveal-delay="4"><div class="pillar-title">Community</div><div class="pillar-desc">We don't shrink here. A space where shared experience creates connection — and connection builds something lasting.</div></div>
     </div>
+  </div>
+</section>
+
+<!-- CONTENT PILLARS -->
+<section class="pillars-section" id="pillars">
+  <div class="container">
+    <div class="pillars-header" data-reveal>
+      <div class="section-eyebrow">What We Create</div>
+      <span class="gold-line" style="margin-inline:auto;"></span>
+      <h2 class="section-headline">Five Pillars.<br>One <em>Standard.</em></h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-tile" data-reveal>
+        <div class="pillar-tile-icon">🧠</div>
+        <div class="pillar-tile-title">Mindset</div>
+        <div class="pillar-tile-desc">Confidence, self-talk, and the inner work behind every outward step.</div>
+      </div>
+      <div class="pillar-tile" data-reveal data-reveal-delay="1">
+        <div class="pillar-tile-icon">✨</div>
+        <div class="pillar-tile-title">Lifestyle</div>
+        <div class="pillar-tile-desc">Health, motherhood, relationships, and the everyday choices that build a life.</div>
+      </div>
+      <div class="pillar-tile" data-reveal data-reveal-delay="2">
+        <div class="pillar-tile-icon">🎨</div>
+        <div class="pillar-tile-title">Creativity</div>
+        <div class="pillar-tile-desc">Entrepreneurship, content, technology, and building things from nothing.</div>
+      </div>
+      <div class="pillar-tile" data-reveal data-reveal-delay="3">
+        <div class="pillar-tile-icon">🎮</div>
+        <div class="pillar-tile-title">Gaming</div>
+        <div class="pillar-tile-desc">Where it began. One room in the house — not the whole house.</div>
+      </div>
+      <div class="pillar-tile" data-reveal data-reveal-delay="4">
+        <div class="pillar-tile-icon">💜</div>
+        <div class="pillar-tile-title">Community</div>
+        <div class="pillar-tile-desc">The thread that connects every pillar. Nobody levels up alone.</div>
+      </div>
+    </div>
+    <p class="pillars-note" data-reveal data-reveal-delay="2">Brand Values are what we believe. Content Pillars are what we create. Both carry the same standard.</p>
   </div>
 </section>
 
@@ -397,7 +450,7 @@
         <img src="https://res.cloudinary.com/dpezjkpka/image/upload/f_auto,q_auto/20250720_145706_IMG_9951_jumniz" alt="Aliyah — Founder, The Level Up Culture" loading="lazy">
       </div>
       <div class="founder-img-overlay">
-        <p class="founder-img-quote">"I looked for this community before I built it. I didn't find it. So I built it."</p>
+        <p class="founder-img-quote">"This community didn't exist when I needed it. So I created it."</p>
         <p class="founder-img-attr">Aliyah — Founder, The Level Up Culture</p>
       </div>
     </div>
@@ -408,8 +461,10 @@
         <p>I started gaming at 31. I had no idea what I was doing. I felt out of place more than once.</p>
         <p>I searched for a space where a Black woman who started gaming as a mom of four — with a full life already in motion — could belong without having to justify her presence.</p>
         <p><strong>I didn't find it. So I built it.</strong></p>
-        <p>Somewhere in the process of learning, failing, trying again, and showing up in spaces that weren't built for me — I grew. Not as a gamer. As a person.</p>
-        <p>Gaming gave me confidence built through action. Evidence that I could handle more than I thought. That story deserves to be told. And it deserves a community around it.</p>
+        <p>Somewhere in the process of learning, failing, trying again, and showing up in a space that wasn't built for me — I grew. Not as a gamer. As a person.</p>
+        <p>And that's when I realized gaming was never really the destination. It was the doorway. The thing that proved confidence isn't something you wait to feel — it's something you build, one uncomfortable step at a time, in any room you decide to walk into.</p>
+        <p>That discovery became bigger than one hobby. The Level Up Culture grew into a space for mindset, lifestyle, creativity, community — gaming included, but no longer the whole story.</p>
+        <p>This brand is still rooted in my lived experience as a Black woman who found her confidence through growth. That part never changes. But the invitation has grown wider — to anyone who believes in growth, confidence, community, and living life on purpose.</p>
       </div>
       <div class="founder-phrases" data-reveal data-reveal-delay="3">
         <div class="phrase-line">Press Start Anyway.</div>
@@ -426,13 +481,13 @@
     <div class="for-you-header" data-reveal>
       <div class="section-eyebrow">Who This Space Is For</div>
       <span class="gold-line" style="margin-inline:auto;"></span>
-      <h2 class="section-headline">You Don't Need Permission<br>to <em>Walk In.</em></h2>
+      <h2 class="section-headline">You Don't Need Permission<br>to <em>Begin.</em></h2>
     </div>
     <div class="for-you-grid">
       <div class="for-card" data-reveal><div class="for-icon">⏰</div><div class="for-title">The Woman Who Started Later</div><div class="for-desc">There is no deadline on becoming who you're meant to be. Your timeline is yours — full stop.</div></div>
-      <div class="for-card" data-reveal data-reveal-delay="1"><div class="for-icon">👑</div><div class="for-title">The Mom Who Games</div><div class="for-desc">Yes, it counts. Gaming after the kids go to bed is still gaming. You belong here exactly as you are.</div></div>
-      <div class="for-card" data-reveal data-reveal-delay="2"><div class="for-icon">🎮</div><div class="for-title">The Beginner Who's Unsure</div><div class="for-desc">No gatekeeping. No earning your place. No one is going to quiz you on how long you've been playing.</div></div>
-      <div class="for-card" data-reveal data-reveal-delay="3"><div class="for-icon">🔥</div><div class="for-title">The Woman Ready to Be Seen</div><div class="for-desc">You have been standing at the edge of gaming spaces long enough. You don't need permission to walk in.</div></div>
+      <div class="for-card" data-reveal data-reveal-delay="1"><div class="for-icon">👑</div><div class="for-title">The Mom Rebuilding Her Identity</div><div class="for-desc">Yes, it counts — whatever "it" is for you. Reclaiming something just for yourself is never a small thing.</div></div>
+      <div class="for-card" data-reveal data-reveal-delay="2"><div class="for-icon">🎮</div><div class="for-title">The Beginner Who's Unsure</div><div class="for-desc">No gatekeeping. No earning your place. No one is going to quiz you on how long you've been at this.</div></div>
+      <div class="for-card" data-reveal data-reveal-delay="3"><div class="for-icon">🔥</div><div class="for-title">The Woman Ready to Be Seen</div><div class="for-desc">You have been standing at the edge of your own potential long enough. You don't need permission to walk in.</div></div>
       <div class="for-card" data-reveal data-reveal-delay="4"><div class="for-icon">🌱</div><div class="for-title">The Growth-Minded Creator</div><div class="for-desc">If you respect the values — confidence, visibility, growth, and representation — you are welcome here.</div></div>
       <div class="for-card" data-reveal data-reveal-delay="5"><div class="for-icon">💜</div><div class="for-title">The Community Builder</div><div class="for-desc">One woman's story became a movement. If you want to be part of building something bigger — this is it.</div></div>
     </div>
@@ -510,7 +565,7 @@
           <div data-reveal><div class="section-eyebrow" style="color:var(--gold);">First Product</div><span class="gold-line"></span></div>
           <h2 class="product-headline" data-reveal data-reveal-delay="1">The<br><span>Presence</span> Pack</h2>
           <p class="product-sub" data-reveal data-reveal-delay="1">Identity Statements for Women Who Press Start Anyway</p>
-          <p class="product-desc" data-reveal data-reveal-delay="2">This is not motivational content. This is identity-based content. The Presence Pack exists to remind you of who you already are — before you walk into any room, any game, any space that wasn't originally built for you.</p>
+          <p class="product-desc" data-reveal data-reveal-delay="2">This is not motivational content. This is identity-based content. The Presence Pack exists to remind you of who you already are — before you walk into any room, any goal, any space that wasn't originally built for you.</p>
           <div data-reveal data-reveal-delay="3"><a href="#join" class="btn-primary">Get Notified at Launch</a></div>
         </div>
         <div data-reveal data-reveal-delay="2">
@@ -574,7 +629,7 @@
     <div class="footer-inner">
       <div>
         <div class="footer-logo">The Level Up Culture<span>Presence Requires No Permission</span></div>
-        <p class="footer-tagline">A media, community, and lifestyle brand centered around Black women boldly stepping into gaming spaces.</p>
+        <p class="footer-tagline">A lifestyle brand built on confidence, growth, and community — rooted in the lived experience of a Black woman who built the space she once searched for.</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/thelevelupculture/" target="_blank" class="social-link">Instagram</a>
           <a href="https://www.youtube.com/@Thelevelupculture" target="_blank" class="social-link">YouTube</a>
@@ -583,7 +638,7 @@
         </div>
       </div>
       <div class="footer-nav">
-        <div><div class="footer-col-title">Brand</div><div class="footer-links"><a href="#mission">Our Mission</a><a href="#founder">The Founder Story</a><a href="#blog" onclick="showHome()">Blog</a><a href="#product">The Presence Pack</a></div></div>
+        <div><div class="footer-col-title">Brand</div><div class="footer-links"><a href="#mission">Our Mission</a><a href="#pillars">Content Pillars</a><a href="#founder">The Founder Story</a><a href="#blog" onclick="showHome()">Blog</a><a href="#product">The Presence Pack</a></div></div>
         <div><div class="footer-col-title">Content</div><div class="footer-links"><a href="#blog" onclick="showHome()">Blog</a><a href="https://www.youtube.com/@Thelevelupculture" target="_blank">YouTube</a><a href="https://www.facebook.com/thelevelupculture" target="_blank">Facebook</a><a href="#blog" onclick="showHome()">Confidence &amp; Mindset</a></div></div>
         <div><div class="footer-col-title">Community</div><div class="footer-links"><a href="https://discord.gg/ZDWzYahgC" target="_blank">Discord</a><a href="https://www.instagram.com/thelevelupculture/" target="_blank">Instagram</a><a href="#join">Newsletter</a><a href="mailto:hello@thelevelupculture.com">Contact</a></div></div>
       </div>
