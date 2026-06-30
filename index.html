@@ -42,14 +42,14 @@
   .nav-logo span { color: var(--purple); display: block; font-size: 8px; letter-spacing: 2px; margin-top: 2px; }
   .nav-links { display: flex; align-items: center; gap: 28px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
   .nav-links a { color: var(--muted); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ivory); }
+  .nav-links a:hover, .nav-links a.active { color: var(--ivory); }
   .nav-cta { background: var(--purple); color: white; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 10px 20px; border-radius: 3px; border: none; cursor: pointer; transition: opacity 0.2s; }
   .nav-cta:hover { opacity: 0.85; }
   .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .nav-burger span { width: 24px; height: 2px; background: var(--ivory); }
 
   /* HERO */
-  .hero { min-height: 100vh; padding: 140px 0 80px; position: relative; overflow: hidden; display: flex; align-items: center; background: radial-gradient(ellipse 80% 70% at 70% 50%, rgba(45,23,61,0.8) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(110,68,255,0.12) 0%, transparent 60%), var(--black); }
+  .hero { min-height: 100vh; padding: 100px 0 80px; position: relative; overflow: hidden; display: flex; align-items: center; background: radial-gradient(ellipse 80% 70% at 70% 50%, rgba(45,23,61,0.8) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(110,68,255,0.12) 0%, transparent 60%), var(--black); }
   #particles { position: absolute; inset: 0; pointer-events: none; opacity: 0.4; }
   .hero-inner { display: grid; grid-template-columns: 1fr 440px; gap: 60px; align-items: center; position: relative; z-index: 2; }
   .hero-headline { font-size: clamp(40px, 5.5vw, 76px); font-weight: 900; line-height: 1.0; letter-spacing: -2px; text-transform: uppercase; margin: 24px 0 0; }
@@ -87,6 +87,9 @@
   .section-headline { font-size: clamp(26px, 3.5vw, 44px); font-weight: 900; letter-spacing: -1px; line-height: 1.1; text-transform: uppercase; margin: 16px 0; }
   .section-headline em { font-style: normal; color: var(--purple); }
   .section-body { font-family: var(--font-body); font-size: 16px; line-height: 1.8; color: rgba(248,246,242,0.7); }
+  .section-block { padding: 90px 0; }
+  .section-block.alt { background: var(--charcoal); }
+  .section-header-center { text-align: center; margin-bottom: 56px; }
   .section-body p + p { margin-top: 16px; }
   .mission-statement { font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; font-style: italic; font-family: var(--font-body); line-height: 1.4; color: var(--ivory); border-left: 3px solid var(--purple); padding: 4px 0 4px 24px; margin: 4px 0 28px; }
   .mission-statement strong { font-style: normal; color: var(--purple); font-weight: 700; }
@@ -363,6 +366,17 @@
   .mobile-menu a { font-size: 22px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--ivory); transition: color 0.2s; }
   .mobile-menu a:hover { color: var(--purple); }
   .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 28px; cursor: pointer; color: var(--muted); background: none; border: none; }
+
+  /* JOURNEY BAR */
+  .journey-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 99; padding-top: 64px; background: rgba(13,13,13,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid #1a1a1a; transition: padding-top 0.3s; }
+  .nav.scrolled ~ .journey-bar { padding-top: 50px; }
+  .journey-inner { display: flex; align-items: center; gap: 10px; padding: 12px 0; overflow-x: auto; scrollbar-width: none; }
+  .journey-inner::-webkit-scrollbar { display: none; }
+  .journey-step { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
+  .journey-step:hover { color: var(--ivory); }
+  .journey-step.current { color: var(--purple); font-weight: 800; }
+  .journey-sep { color: #333; font-size: 10px; flex-shrink: 0; }
+  .journey-spacer { height: 44px; }
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { animation: none; }
     [data-reveal] { opacity: 1; transform: none; }
@@ -374,18 +388,18 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#" class="nav-logo" onclick="showHome()">
+    <a href="/" class="nav-logo">
       The Level Up Culture
-      <span>Presence Requires No Permission</span>
+      <span>Growth Is the Standard</span>
     </a>
     <div class="nav-links">
-      <a href="#mission">Mission</a>
-      <a href="#principles">Principles</a>
-      <a href="#founder">Founder</a>
-      <a href="#blog" onclick="showHome()">Blog</a>
-      <a href="#featured-product">Shop</a>
+      <a href="/" class="active">Home</a>
+      <a href="/mindset">Mindset</a>
+      <a href="/lifestyle">Lifestyle</a>
+      <a href="/community">Community</a>
+      <a href="/collections">Collections</a>
     </div>
-    <a href="#join" class="nav-cta">Press Start</a>
+    <a href="/community#join" class="nav-cta">Press Start</a>
     <div class="nav-burger" id="burger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -394,13 +408,29 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()">✕</button>
-  <a href="#mission" onclick="toggleMenu()">Mission</a>
-  <a href="#principles" onclick="toggleMenu()">Principles</a>
-  <a href="#founder" onclick="toggleMenu()">Founder</a>
-  <a href="#blog" onclick="toggleMenu();showHome()">Blog</a>
-  <a href="#featured-product" onclick="toggleMenu()">Shop</a>
-  <a href="#join" onclick="toggleMenu()" style="color:var(--purple)">Press Start</a>
+  <a href="/" onclick="toggleMenu()" class="active">Home</a>
+  <a href="/mindset" onclick="toggleMenu()">Mindset</a>
+  <a href="/lifestyle" onclick="toggleMenu()">Lifestyle</a>
+  <a href="/community" onclick="toggleMenu()">Community</a>
+  <a href="/collections" onclick="toggleMenu()">Collections</a>
+  <a href="/community#join" onclick="toggleMenu()" style="color:var(--purple)">Press Start</a>
 </div>
+
+<!-- JOURNEY BAR -->
+<div class="journey-bar">
+  <div class="container journey-inner">
+      <a href="/" class="journey-step current">Home</a>
+      <span class="journey-sep">→</span>
+      <a href="/mindset" class="journey-step">Mindset</a>
+      <span class="journey-sep">→</span>
+      <a href="/lifestyle" class="journey-step">Lifestyle</a>
+      <span class="journey-sep">→</span>
+      <a href="/community" class="journey-step">Community</a>
+      <span class="journey-sep">→</span>
+      <a href="/collections" class="journey-step">Collections</a>
+  </div>
+</div>
+<div class="journey-spacer"></div>
 
 <!-- ======= MAIN SITE ======= -->
 <div id="mainSite">
@@ -463,30 +493,30 @@
       <h2 class="section-headline">Start Your<br><em>Level Up.</em></h2>
     </div>
     <div class="start-grid">
-      <div class="start-card" data-reveal>
+      <a href="/mindset" class="start-card" data-reveal>
         <div class="start-card-icon">🧠</div>
         <div class="start-card-title">Mindset</div>
         <div class="start-card-desc">Build confidence, resilience, and intentional habits.</div>
-        <a href="#pillars" class="start-card-cta">Explore →</a>
-      </div>
-      <div class="start-card" data-reveal data-reveal-delay="1">
+        <span class="start-card-cta">Explore →</span>
+      </a>
+      <a href="/lifestyle" class="start-card" data-reveal data-reveal-delay="1">
         <div class="start-card-icon">✨</div>
         <div class="start-card-title">Lifestyle</div>
         <div class="start-card-desc">Systems, routines, productivity, creativity, and intentional living.</div>
-        <a href="#pillars" class="start-card-cta">Discover →</a>
-      </div>
-      <div class="start-card" data-reveal data-reveal-delay="2">
+        <span class="start-card-cta">Discover →</span>
+      </a>
+      <a href="/community" class="start-card" data-reveal data-reveal-delay="2">
         <div class="start-card-icon">💜</div>
         <div class="start-card-title">Community</div>
         <div class="start-card-desc">Find people committed to growing together.</div>
-        <a href="#join" class="start-card-cta">Join Us →</a>
-      </div>
-      <div class="start-card" data-reveal data-reveal-delay="3">
+        <span class="start-card-cta">Join Us →</span>
+      </a>
+      <a href="/collections" class="start-card" data-reveal data-reveal-delay="3">
         <div class="start-card-icon">🛍️</div>
-        <div class="start-card-title">Shop</div>
+        <div class="start-card-title">Collections</div>
         <div class="start-card-desc">Journals, apparel, and tools designed to support intentional growth.</div>
-        <a href="#featured-product" class="start-card-cta muted">Coming Soon →</a>
-      </div>
+        <span class="start-card-cta muted">In Development →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -707,119 +737,17 @@
   </div>
 </section>
 
-<!-- FEATURED PRODUCT -->
-<section class="featured-product" id="featured-product">
+<!-- COLLECTIONS TEASER -->
+<section class="section-block alt">
   <div class="container">
-    <div class="fp-inner">
-      <div class="fp-grid">
-        <div class="fp-image-placeholder" data-reveal>
-          <div class="fp-image-icon">📓</div>
-          <div class="fp-image-label">Product Image Coming Soon</div>
-        </div>
-        <div class="fp-content">
-          <div data-reveal>
-            <div class="fp-badge">Featured Product</div>
-          </div>
-          <h2 class="fp-title" data-reveal data-reveal-delay="1">The<br><span>Press Start Anyway</span> Journal</h2>
-          <p class="fp-desc" data-reveal data-reveal-delay="2">A guided journal built for intentional growth — mindset prompts, habit tracking, and reflection pages designed to help you become the person you're working toward, one page at a time. Part of the Foundation Collection.</p>
-          <div class="fp-actions" data-reveal data-reveal-delay="3">
-            <a href="#join" class="btn-ghost">Coming Soon</a>
-            <a href="#join" class="btn-primary">Join Waitlist →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRESENCE PACK -->
-<section class="product" id="product">
-  <div class="container">
-    <div class="product-inner">
-      <div class="product-grid">
-        <div>
-          <div data-reveal><div class="section-eyebrow" style="color:var(--gold);">First Product</div><span class="gold-line"></span></div>
-          <h2 class="product-headline" data-reveal data-reveal-delay="1">The<br><span>Presence</span> Pack</h2>
-          <p class="product-sub" data-reveal data-reveal-delay="1">Identity Statements for Women Who Press Start Anyway</p>
-          <p class="product-desc" data-reveal data-reveal-delay="2">This is not motivational content. This is identity-based content. The Presence Pack exists to remind you of who you already are — before you walk into any room, any goal, any space that wasn't originally built for you.</p>
-          <div data-reveal data-reveal-delay="3"><a href="#join" class="btn-primary">Get Notified at Launch</a></div>
-        </div>
-        <div data-reveal data-reveal-delay="2">
-          <div class="pack-mockup">
-            <div class="pack-logo">The Level Up Culture</div>
-            <div class="pack-name">The <span>Presence</span> Pack</div>
-            <div class="pack-tagline">Identity Statements for Women Who Press Start Anyway</div>
-            <div class="pack-statements">
-              <div class="pack-stmt">I Belong Here.</div>
-              <div class="pack-stmt">Presence Requires No Permission.</div>
-              <div class="pack-stmt">Growth Is the Standard.</div>
-              <div class="pack-stmt">We Don't Shrink Here.</div>
-              <div class="pack-stmt">Press Start Anyway.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THE FUTURE WE'RE BUILDING -->
-<section class="future-section" id="future">
-  <div class="container">
-    <div class="future-header" data-reveal>
+    <div class="section-header-center" data-reveal>
       <div class="section-eyebrow">What's Ahead</div>
       <span class="gold-line" style="margin-inline:auto;"></span>
       <h2 class="section-headline">The Future<br>We're <em>Building.</em></h2>
+      <p class="section-body" style="max-width:560px;margin:20px auto 0;text-align:center;">Journals, apparel, workspace tools, and digital products — not gaming merchandise, but lifestyle products inspired by intentional growth.</p>
     </div>
-    <div class="future-grid">
-      <div class="future-card" data-reveal>
-        <div class="future-card-top">
-          <div class="future-card-icon">📓</div>
-          <span class="future-status status-foundation">Part of the Foundation Collection</span>
-        </div>
-        <div class="future-card-title">Journals</div>
-        <div class="future-card-desc">Guided tools for mindset, habits, and intentional reflection.</div>
-      </div>
-      <div class="future-card" data-reveal data-reveal-delay="1">
-        <div class="future-card-top">
-          <div class="future-card-icon">👕</div>
-          <span class="future-status status-launching">Launching Soon</span>
-        </div>
-        <div class="future-card-title">Apparel</div>
-        <div class="future-card-desc">Identity-driven pieces that carry the principles with you.</div>
-      </div>
-      <div class="future-card" data-reveal data-reveal-delay="2">
-        <div class="future-card-top">
-          <div class="future-card-icon">🖥️</div>
-          <span class="future-status status-development">Currently in Development</span>
-        </div>
-        <div class="future-card-title">Workspace</div>
-        <div class="future-card-desc">Tools and setups designed to support how you build and create.</div>
-      </div>
-      <div class="future-card" data-reveal data-reveal-delay="3">
-        <div class="future-card-top">
-          <div class="future-card-icon">💜</div>
-          <span class="future-status status-foundation">Part of the Foundation Collection</span>
-        </div>
-        <div class="future-card-title">Community</div>
-        <div class="future-card-desc">Deeper spaces for connection, accountability, and shared growth.</div>
-      </div>
-      <div class="future-card" data-reveal data-reveal-delay="4">
-        <div class="future-card-top">
-          <div class="future-card-icon">📲</div>
-          <span class="future-status status-development">Currently in Development</span>
-        </div>
-        <div class="future-card-title">Digital Products</div>
-        <div class="future-card-desc">Templates, guides, and resources for intentional living.</div>
-      </div>
-      <div class="future-card" data-reveal data-reveal-delay="5">
-        <div class="future-card-top">
-          <div class="future-card-icon">🎬</div>
-          <span class="future-status status-development">Currently in Development</span>
-        </div>
-        <div class="future-card-title">LUC Studio</div>
-        <div class="future-card-desc">Original content, media, and storytelling from the brand.</div>
-      </div>
+    <div style="text-align:center;margin-top:36px;" data-reveal data-reveal-delay="1">
+      <a href="/collections" class="btn-primary">Explore Collections →</a>
     </div>
   </div>
 </section>
@@ -875,9 +803,9 @@
         </div>
       </div>
       <div class="footer-nav">
-        <div><div class="footer-col-title">Brand</div><div class="footer-links"><a href="#mission">Our Mission</a><a href="#pillars">Content Pillars</a><a href="#founder">The Founder Story</a><a href="#blog" onclick="showHome()">Blog</a><a href="#product">The Presence Pack</a></div></div>
-        <div><div class="footer-col-title">Content</div><div class="footer-links"><a href="#blog" onclick="showHome()">Blog</a><a href="https://www.youtube.com/@Thelevelupculture" target="_blank">YouTube</a><a href="https://www.facebook.com/thelevelupculture" target="_blank">Facebook</a><a href="#blog" onclick="showHome()">Confidence &amp; Mindset</a></div></div>
-        <div><div class="footer-col-title">Community</div><div class="footer-links"><a href="https://discord.gg/ZDWzYahgC" target="_blank">Discord</a><a href="https://www.instagram.com/thelevelupculture/" target="_blank">Instagram</a><a href="#join">Newsletter</a><a href="mailto:hello@thelevelupculture.com">Contact</a></div></div>
+        <div><div class="footer-col-title">Ecosystem</div><div class="footer-links"><a href="/mindset">Mindset</a><a href="/lifestyle">Lifestyle</a><a href="/community">Community</a><a href="/collections">Collections</a></div></div>
+        <div><div class="footer-col-title">Brand</div><div class="footer-links"><a href="#mission">Our Mission</a><a href="#principles">Our Principles</a><a href="#founder">Founder Story</a><a href="#blog" onclick="showHome()">Blog</a></div></div>
+        <div><div class="footer-col-title">Community</div><div class="footer-links"><a href="https://discord.gg/ZDWzYahgC" target="_blank">Discord</a><a href="https://www.instagram.com/thelevelupculture/" target="_blank">Instagram</a><a href="/community#join">Newsletter</a><a href="mailto:hello@thelevelupculture.com">Contact</a></div></div>
       </div>
     </div>
     <div class="footer-bottom">
