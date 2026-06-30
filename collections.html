@@ -190,6 +190,112 @@ a{color:inherit;text-decoration:none}
   .footer-cols{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}}
+
+/* ── MOBILE FIXES ───────────────────────────────── */
+@media(max-width:768px){
+
+  /* Nav spacer adjustment */
+  .nav-spacer{height:56px}
+
+  /* Journey bar */
+  .journey-bar{padding:8px 0}
+  .j-step{font-size:8.5px;letter-spacing:1px}
+
+  /* Hero text */
+  h1[style]{letter-spacing:-1.5px!important}
+
+  /* Force ALL inline-grid containers to single column */
+  [style*="grid-template-columns"]{
+    grid-template-columns:1fr!important;
+    gap:16px!important
+  }
+
+  /* Except 2-col grids we want to keep as 2-col on mobile for small cards */
+  .card-grid.cols-4{grid-template-columns:1fr 1fr!important}
+
+  /* Founder section two-column layout */
+  #founder .container,
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+    gap:40px!important
+  }
+
+  /* Featured product grid inside collections */
+  .fp-grid-inner{grid-template-columns:1fr!important;gap:36px!important}
+
+  /* Destination nav grid */
+  .dest-grid{grid-template-columns:1fr 1fr!important;gap:12px!important}
+
+  /* Stats row in hero */
+  .hero-stats{flex-direction:column!important;gap:20px!important}
+
+  /* Section padding */
+  .section{padding:64px 0!important}
+  .sig-quote{padding:56px 0!important}
+  .dest-nav{padding:56px 0!important}
+
+  /* Card padding */
+  .card,.placeholder{padding:22px 18px!important}
+
+  /* Button stacking */
+  [style*="display:flex"][style*="gap:14px"],
+  [style*="display:flex"][style*="gap:16px"]{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:12px!important
+  }
+
+  /* Mailchimp form */
+  #mc_embed_signup_scroll{flex-direction:column!important}
+  #mc_embed_signup input.email{
+    border-right:1px solid rgba(255,255,255,.1)!important;
+    border-radius:3px!important;
+    border-bottom:none!important;
+    width:100%!important
+  }
+  #mc_embed_signup .button{
+    border-radius:3px!important;
+    width:100%!important;
+    text-align:center!important;
+    padding:14px!important
+  }
+  #mc_embed_signup .optionalParent .foot{flex-direction:column!important}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr!important;gap:36px!important}
+  .footer-cols{grid-template-columns:1fr 1fr!important;gap:20px!important}
+  .footer-bottom{flex-direction:column!important;gap:12px!important}
+  .footer-mantras{display:none!important}
+
+  /* Section header center on mobile */
+  .section-head.center,.section-head{text-align:center}
+  .section-head .gold-line{margin-inline:auto}
+
+  /* Hide decorative side image on small screens */
+  .hero-img-wrap{display:none!important}
+
+  /* Container breathing room */
+  .container{width:92vw!important}
+
+  /* Marquee speed adjustment */
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+}
+
+
+@media(max-width:600px){
+  .btn-row{flex-direction:column!important;align-items:stretch!important}
+  .btn-row .btn{text-align:center!important;justify-content:center!important}
+  .btn{width:100%!important;justify-content:center!important}
+}
+
+@media(max-width:480px){
+  .card-grid.cols-4{grid-template-columns:1fr!important}
+  .dest-grid{grid-template-columns:1fr!important}
+  .footer-cols{grid-template-columns:1fr!important}
+  .hero-stats > div{width:100%!important}
+}
+
 </style>
 <style>:root{--accent:#C8A44D}</style>
 
@@ -240,7 +346,7 @@ a{color:inherit;text-decoration:none}
   <div class="container">
     <div style="background:linear-gradient(135deg,var(--plum),#1a0a3d);border:1px solid rgba(200,164,77,.22);border-radius:10px;padding:60px;position:relative;overflow:hidden">
       <div style="position:absolute;bottom:-80px;left:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(200,164,77,.12) 0%,transparent 70%);pointer-events:none"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+      <div class="fp-grid-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
         <div data-reveal style="aspect-ratio:4/5;background:rgba(13,13,13,.5);border:1px dashed rgba(200,164,77,.35);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
           <div style="font-size:52px;opacity:.35">📓</div>
           <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Product Image Coming Soon</div>
