@@ -485,23 +485,152 @@ a{color:inherit;text-decoration:none}
       <div style="font-size:36px;font-weight:900;color:var(--ivory);margin-bottom:6px">$48</div>
       <div style="font-size:11px;color:var(--muted);margin-bottom:28px">+ shipping · ships personally from the founder</div>
       <div style="margin-bottom:16px">
-        <div id="mc_embed_signup" style="background:transparent!important;width:100%!important">
-          <form action="https://thelevelupculture.us10.list-manage.com/subscribe/post?u=8527366354aa3ad68c9fba045&amp;id=816c3702d1&amp;f_id=004cbce0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-            <div id="mc_embed_signup_scroll">
-              <div class="mc-field-group">
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Your email address" aria-label="Email address" style="width:100%;background:rgba(255,255,255,.05)!important;border:1px solid rgba(255,255,255,.1)!important;color:var(--ivory)!important;font-family:var(--font-d)!important;font-size:14px!important;padding:14px 18px!important;border-radius:3px!important;outline:none!important;margin-bottom:12px!important;display:block!important">
-              </div>
-              <div aria-hidden="true" style="position:absolute;left:-5000px">
-                <input type="text" name="b_8527366354aa3ad68c9fba045_816c3702d1" tabindex="-1" value="">
-              </div>
-              <div class="optionalParent"><div class="foot" style="display:block!important">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Reserve My Copy →" style="background:var(--purple)!important;color:#fff!important;border:none!important;font-family:var(--font-d)!important;font-size:12px!important;font-weight:800!important;letter-spacing:2px!important;text-transform:uppercase!important;padding:16px 28px!important;border-radius:3px!important;cursor:pointer!important;width:100%!important;display:block!important">
-              </div></div>
-            </div>
-          </form>
-        </div>
+        <div id='product-component-1782916925201'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'yntaun-0e.myshopify.com',
+      storefrontAccessToken: 'bd4cfb5cc1ddba53ec2586147220223c',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: '15182389313900',
+        node: document.getElementById('product-component-1782916925201'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        ":hover": {
+          "background-color": "#633de6"
+        },
+        "background-color": "#6e44ff",
+        ":focus": {
+          "background-color": "#633de6"
+        },
+        "font-family": "Montserrat, sans-serif",
+        "font-size": "12px",
+        "font-weight": "800",
+        "letter-spacing": "2px",
+        "text-transform": "uppercase",
+        "padding": "16px 32px",
+        "border-radius": "3px",
+        "width": "100%"
+      }
+    },
+    "text": {
+      "button": "Reserve My Copy →"
+    },
+    "contents": {
+      "img": false,
+      "title": false,
+      "price": false
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "0px"
+        }
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        ":hover": {
+          "background-color": "#633de6"
+        },
+        "background-color": "#6e44ff",
+        ":focus": {
+          "background-color": "#633de6"
+        }
+      }
+    },
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "option": {},
+  "cart": {
+    "styles": {
+      "button": {
+        ":hover": {
+          "background-color": "#633de6"
+        },
+        "background-color": "#6e44ff",
+        ":focus": {
+          "background-color": "#633de6"
+        }
+      }
+    },
+    "text": {
+      "total": "Subtotal",
+      "button": "Checkout"
+    }
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "background-color": "#6e44ff",
+        ":hover": {
+          "background-color": "#633de6"
+        },
+        ":focus": {
+          "background-color": "#633de6"
+        }
+      }
+    }
+  }
+},
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
       </div>
-      <p style="font-size:11px;color:var(--muted);line-height:1.6">By reserving your copy you'll be first notified when the journal ships and receive exclusive founder updates on the production process.</p>
+      <p style="font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px">Secure checkout powered by Shopify. You'll receive an order confirmation immediately and a personal note from the founder when your journal ships.</p>
     </div>
 
     <!-- Trust signals -->
