@@ -1,1 +1,792 @@
-PART1_PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Level Up Culture — A Lifestyle of Intentional Growth</title>
+<meta name="description" content="The Level Up Culture exists to help people intentionally build lives they're proud of. A lifestyle brand for growth, confidence, creativity, community, and gaming.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #0D0D0D;
+  --purple:  #6E44FF;
+  --ivory:   #F8F6F2;
+  --gold:    #C8A44D;
+  --plum:    #2D173D;
+  --charcoal:#161616;
+  --muted:   #777;
+  --accent:  #6E44FF;
+  --font-d:  'Montserrat', sans-serif;
+  --font-b:  'Playfair Display', serif;
+  --ease:    cubic-bezier(.22,1,.36,1);
+  --r:       6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--ivory);font-family:var(--font-d);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.container{width:min(1140px,90vw);margin-inline:auto}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:background .3s,padding .3s}
+.nav.scrolled{background:rgba(13,13,13,.96);backdrop-filter:blur(16px);border-bottom:1px solid #1c1c1c;padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:11px;font-weight:900;letter-spacing:3.5px;text-transform:uppercase;line-height:1.25}
+.nav-logo span{color:var(--accent);font-size:8px;letter-spacing:2px;display:block;margin-top:2px;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:30px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ivory)}
+.nav-cta{background:var(--accent);color:#fff;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:11px 22px;border-radius:3px;transition:opacity .2s,transform .2s}
+.nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:var(--ivory);border-radius:1px;transition:transform .3s}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:200;background:var(--black);flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:20px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--ivory);transition:color .2s}
+.mobile-menu a:hover{color:var(--accent)}
+.mobile-close{position:absolute;top:24px;right:24px;font-size:26px;cursor:pointer;color:var(--muted);background:none;border:none;font-family:var(--font-d)}
+
+/* JOURNEY BAR */
+.journey-bar{background:rgba(13,13,13,.97);border-bottom:1px solid #1a1a1a;padding:10px 0;position:sticky;top:0;z-index:90;backdrop-filter:blur(12px)}
+.journey-inner{display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
+.journey-inner::-webkit-scrollbar{display:none}
+.j-step{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);white-space:nowrap;transition:color .2s;flex-shrink:0}
+.j-step:hover{color:var(--ivory)}
+.j-step.active{color:var(--accent);font-weight:800}
+.j-sep{color:#2a2a2a;font-size:10px;flex-shrink:0}
+.nav-spacer{height:64px}
+
+/* SHARED TOKENS */
+.eyebrow{font-size:9.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.gold-line{display:block;width:40px;height:2px;background:var(--gold);border-radius:1px;margin:14px 0}
+.gold-line.center{margin-inline:auto}
+.section-hed{font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase}
+.section-hed em{font-style:normal;color:var(--accent)}
+.body-copy{font-family:var(--font-b);font-size:16px;line-height:1.85;color:rgba(248,246,242,.72)}
+.body-copy p+p{margin-top:16px}
+.tag{display:inline-flex;align-items:center;font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;border:1px solid rgba(110,68,255,.35);background:rgba(110,68,255,.07);color:var(--accent);padding:5px 13px;border-radius:3px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;border-radius:3px;border:none;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s,opacity .2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(110,68,255,.38)}
+.btn-ghost{border:1px solid rgba(248,246,242,.18);color:var(--ivory);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);background:rgba(110,68,255,.08)}
+.btn-gold{border:1px solid rgba(200,164,77,.4);color:var(--gold);background:transparent}
+.btn-gold:hover{background:rgba(200,164,77,.08);border-color:var(--gold)}
+
+/* SECTION SHELLS */
+.section{padding:96px 0}
+.section.alt{background:var(--charcoal)}
+.section.deep{background:linear-gradient(to bottom,var(--black),var(--plum) 50%,var(--black))}
+.section-head{margin-bottom:52px}
+.section-head.center{text-align:center}
+.section-head.center .gold-line{margin-inline:auto}
+
+/* CARDS */
+.card-grid{display:grid;gap:18px}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-4{grid-template-columns:repeat(4,1fr)}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:30px 26px;transition:transform .2s var(--ease),border-color .2s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity .2s}
+.card:hover{transform:translateY(-4px);border-color:rgba(110,68,255,.28)}
+.card:hover::before{opacity:1}
+.card-icon{font-size:24px;margin-bottom:16px}
+.card-title{font-size:14px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--ivory);margin-bottom:10px}
+.card-desc{font-family:var(--font-b);font-size:13px;line-height:1.7;color:var(--muted)}
+.card-cta{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-top:18px;transition:gap .2s}
+.card:hover .card-cta{gap:10px}
+
+/* PLACEHOLDER (no fake content) */
+.placeholder{border:1px dashed rgba(255,255,255,.12);border-radius:var(--r);padding:52px 32px;text-align:center;transition:border-color .2s}
+.placeholder:hover{border-color:rgba(110,68,255,.3)}
+.placeholder-icon{font-size:32px;opacity:.3;margin-bottom:18px}
+.status{display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:3px;margin-bottom:14px}
+.s-building{background:rgba(110,68,255,.14);color:#a68eff}
+.s-launching{background:rgba(200,164,77,.16);color:var(--gold)}
+.s-growing{background:rgba(248,246,242,.07);color:var(--ivory)}
+.s-foundation{background:rgba(200,164,77,.1);color:var(--gold)}
+.placeholder-title{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:var(--ivory);margin-bottom:10px}
+.placeholder-desc{font-family:var(--font-b);font-size:13.5px;line-height:1.7;color:var(--muted);max-width:400px;margin-inline:auto}
+
+/* SIGNATURE QUOTE */
+.sig-quote{padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.sig-quote-inner{max-width:680px;margin-inline:auto;position:relative;z-index:1}
+.sig-quote-text{font-family:var(--font-b);font-size:clamp(20px,2.8vw,30px);font-style:italic;line-height:1.55;color:var(--ivory)}
+.sig-quote-text strong{font-style:normal;color:var(--accent);font-weight:700}
+.sig-quote-attr{font-size:9.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-top:24px}
+.sig-quote::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(110,68,255,.1) 0%,transparent 70%);pointer-events:none}
+
+/* DESTINATION NAV (cross-page exploration) */
+.dest-nav{padding:70px 0;background:var(--charcoal)}
+.dest-nav-inner{text-align:center;margin-bottom:40px}
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dest-card{border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:26px 20px;text-align:center;transition:transform .2s var(--ease),border-color .2s,background .2s;display:block}
+.dest-card:hover{transform:translateY(-3px);border-color:rgba(110,68,255,.3);background:rgba(110,68,255,.05)}
+.dest-card.current{border-color:var(--accent);background:rgba(110,68,255,.08)}
+.dest-card-icon{font-size:22px;margin-bottom:12px}
+.dest-card-title{font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--ivory);margin-bottom:6px}
+.dest-card-desc{font-family:var(--font-b);font-size:11.5px;line-height:1.5;color:var(--muted)}
+
+/* MAILCHIMP */
+.mc-wrap{max-width:460px;margin-inline:auto}
+#mc_embed_signup{background:transparent!important;font-family:var(--font-d)!important;width:100%!important}
+#mc_embed_signup form{padding:0!important}
+#mc_embed_signup_scroll{display:flex}
+#mc_embed_signup .mc-field-group{flex:1}
+#mc_embed_signup input.email{width:100%;background:rgba(255,255,255,.05)!important;border:1px solid rgba(255,255,255,.1)!important;border-right:none!important;color:var(--ivory)!important;font-family:var(--font-d)!important;font-size:13px!important;padding:14px 18px!important;border-radius:3px 0 0 3px!important;outline:none!important}
+#mc_embed_signup input.email:focus{border-color:var(--accent)!important}
+#mc_embed_signup input.email::placeholder{color:var(--muted)!important}
+#mc_embed_signup .button{background:var(--accent)!important;color:#fff!important;border:none!important;font-family:var(--font-d)!important;font-size:10px!important;font-weight:800!important;letter-spacing:2px!important;text-transform:uppercase!important;padding:14px 20px!important;border-radius:0 3px 3px 0!important;cursor:pointer!important;white-space:nowrap!important}
+#mc_embed_signup h2,#mc_embed_signup .indicates-required,#mc_embed_signup .mc-field-group label,#mc_embed_signup #mce-responses,#mc_embed_signup .foot p{display:none!important}
+#mc_embed_signup .optionalParent .foot{display:flex!important}
+
+/* FOOTER */
+.footer{background:var(--charcoal);border-top:1px solid #1c1c1c;padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:260px 1fr;gap:60px}
+.footer-brand-name{font-size:11px;font-weight:900;letter-spacing:4px;text-transform:uppercase}
+.footer-brand-name span{color:var(--accent);font-size:8px;letter-spacing:2px;display:block;margin-top:3px}
+.footer-tagline{font-family:var(--font-b);font-size:13px;font-style:italic;color:var(--muted);margin:14px 0 22px;line-height:1.55}
+.footer-socials{display:flex;gap:8px;flex-wrap:wrap}
+.social-pill{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:6px 12px;border:1px solid #242424;border-radius:3px;transition:color .2s,border-color .2s}
+.social-pill:hover{color:var(--accent);border-color:var(--accent)}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.footer-col-title{font-size:9.5px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--ivory);margin-bottom:16px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--ivory)}
+.footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid #1c1c1c;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:11px;color:var(--muted)}
+.footer-mantras{display:flex;gap:20px;flex-wrap:wrap}
+.footer-mantras span{font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(248,246,242,.15)}
+
+/* REVEAL ANIMATIONS */
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+[data-reveal].on{opacity:1;transform:translateY(0)}
+[data-reveal][data-d="1"]{transition-delay:.1s}
+[data-reveal][data-d="2"]{transition-delay:.2s}
+[data-reveal][data-d="3"]{transition-delay:.3s}
+[data-reveal][data-d="4"]{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .cols-4{grid-template-columns:repeat(2,1fr)}
+  .cols-3{grid-template-columns:repeat(2,1fr)}
+  .dest-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr;gap:40px}
+  .footer-cols{grid-template-columns:repeat(2,1fr)}
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+}
+@media(max-width:768px){.cols-2{grid-template-columns:1fr!important}}@media(max-width:768px){.cols-2{grid-template-columns:1fr!important}}@media(max-width:600px){
+  .cols-2,.cols-3,.cols-4{grid-template-columns:1fr}
+  .dest-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-cols{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}}
+
+/* ── MOBILE FIXES ───────────────────────────────── */
+@media(max-width:768px){
+
+  /* Nav spacer adjustment */
+  .nav-spacer{height:56px}
+
+  /* Journey bar */
+  .journey-bar{padding:8px 0}
+  .j-step{font-size:8.5px;letter-spacing:1px}
+
+  /* Hero text */
+  h1[style]{letter-spacing:-1.5px!important}
+
+  /* Force ALL inline-grid containers to single column */
+  [style*="grid-template-columns"]{
+    grid-template-columns:1fr!important;
+    gap:16px!important
+  }
+
+  /* Except 2-col grids we want to keep as 2-col on mobile for small cards */
+  .card-grid.cols-4{grid-template-columns:1fr 1fr!important}
+
+  /* Founder section two-column layout */
+  #founder .container,
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+    gap:40px!important
+  }
+
+  /* Featured product grid inside collections */
+  .fp-grid-inner{grid-template-columns:1fr!important;gap:36px!important}
+
+  /* Destination nav grid */
+  .dest-grid{grid-template-columns:1fr 1fr!important;gap:12px!important}
+
+  /* Stats row in hero */
+  .hero-stats{flex-direction:column!important;gap:20px!important}
+
+  /* Section padding */
+  .section{padding:64px 0!important}
+  .sig-quote{padding:56px 0!important}
+  .dest-nav{padding:56px 0!important}
+
+  /* Card padding */
+  .card,.placeholder{padding:22px 18px!important}
+
+  /* Button stacking */
+  [style*="display:flex"][style*="gap:14px"],
+  [style*="display:flex"][style*="gap:16px"]{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:12px!important
+  }
+
+  /* Mailchimp form */
+  #mc_embed_signup_scroll{flex-direction:column!important}
+  #mc_embed_signup input.email{
+    border-right:1px solid rgba(255,255,255,.1)!important;
+    border-radius:3px!important;
+    border-bottom:none!important;
+    width:100%!important
+  }
+  #mc_embed_signup .button{
+    border-radius:3px!important;
+    width:100%!important;
+    text-align:center!important;
+    padding:14px!important
+  }
+  #mc_embed_signup .optionalParent .foot{flex-direction:column!important}
+
+  /* Footer */
+  .footer-grid{grid-template-columns:1fr!important;gap:36px!important}
+  .footer-cols{grid-template-columns:1fr 1fr!important;gap:20px!important}
+  .footer-bottom{flex-direction:column!important;gap:12px!important}
+  .footer-mantras{display:none!important}
+
+  /* Section header center on mobile */
+  .section-head.center,.section-head{text-align:center}
+  .section-head .gold-line{margin-inline:auto}
+
+  /* Hide decorative side image on small screens */
+  .hero-img-wrap{display:none!important}
+
+  /* Container breathing room */
+  .container{width:92vw!important}
+
+  /* Marquee speed adjustment */
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+}
+
+
+@media(max-width:768px){.cols-2{grid-template-columns:1fr!important}}@media(max-width:768px){.cols-2{grid-template-columns:1fr!important}}@media(max-width:600px){
+  .btn-row{flex-direction:column!important;align-items:stretch!important}
+  .btn-row .btn{text-align:center!important;justify-content:center!important}
+  .btn{width:100%!important;justify-content:center!important}
+}
+
+@media(max-width:480px){
+  .card-grid.cols-4{grid-template-columns:1fr!important}
+  .dest-grid{grid-template-columns:1fr!important}
+  .footer-cols{grid-template-columns:1fr!important}
+  .hero-stats > div{width:100%!important}
+}
+
+</style>
+
+
+</head>
+<body>
+<div class="nav-spacer"></div>
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">The Level Up Culture<span>Growth Is the Standard</span></a>
+    <div class="nav-links"><a href="index.html" class="active">Home</a>
+      <a href="mindset.html" class="">Mindset</a>
+      <a href="lifestyle.html" class="">Lifestyle</a>
+      <a href="community.html" class="">Community</a>
+      <a href="collections.html" class="">Collections</a></div>
+    <a href="community.html#join" class="nav-cta">Press Start</a>
+    <div class="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()" class="active">Home</a>
+  <a href="mindset.html" onclick="toggleMenu()" class="">Mindset</a>
+  <a href="lifestyle.html" onclick="toggleMenu()" class="">Lifestyle</a>
+  <a href="community.html" onclick="toggleMenu()" class="">Community</a>
+  <a href="collections.html" onclick="toggleMenu()" class="">Collections</a>
+  <a href="community.html#join" onclick="toggleMenu()" style="color:var(--accent)">Press Start →</a>
+</div>
+
+<!-- HERO -->
+<section style="min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 75% 65% at 65% 45%,rgba(45,23,61,.9) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 15% 80%,rgba(110,68,255,.1) 0%,transparent 55%),var(--black)">
+  <div style="position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%222%22 stitchTiles=%22stitch%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.035%22/></svg>');opacity:.4;pointer-events:none"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="max-width:680px">
+      <div data-reveal><span class="tag">⬡ A Lifestyle &amp; Community Brand</span></div>
+      <h1 data-reveal data-d="1" style="font-size:clamp(42px,6.5vw,82px);font-weight:900;line-height:1.02;letter-spacing:-2.5px;text-transform:uppercase;margin:28px 0 0">
+        <span style="display:block;color:var(--ivory)">We Build</span>
+        <span style="display:block;color:var(--purple)">the Space</span>
+        <span style="display:block;color:var(--ivory);font-size:.5em;font-weight:800;letter-spacing:0;text-transform:none;font-family:var(--font-b);font-style:italic;margin-top:8px">We Once Searched For.</span>
+      </h1>
+      <p data-reveal data-d="2" style="font-family:var(--font-b);font-size:18px;line-height:1.75;color:rgba(248,246,242,.68);margin:30px 0 44px;max-width:520px">Helping people intentionally build lives they're proud of through growth, confidence, and community.</p>
+      <div data-reveal data-d="3" class="btn-row" style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#choose" class="btn btn-primary">Choose Your Next Level →</a>
+        <a href="#founder" class="btn btn-ghost">Our Story</a>
+      </div>
+      <div data-reveal data-d="4" class="hero-stats" style="display:flex;gap:32px;margin-top:52px;padding-top:40px;border-top:1px solid #1c1c1c">
+        <div><div style="font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--ivory)">31</div><div style="font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:4px">Age It Began</div></div>
+        <div style="width:1px;background:#1c1c1c"></div>
+        <div><div style="font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--ivory)">4</div><div style="font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:4px">Sons</div></div>
+        <div style="width:1px;background:#1c1c1c"></div>
+        <div><div style="font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--ivory)">∞</div><div style="font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:4px">No Age Limit on Growth</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div style="background:var(--purple);padding:14px 0;overflow:hidden">
+  <div style="display:flex;gap:0;animation:marquee 28s linear infinite;white-space:nowrap">
+    <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Press Start Anyway <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Growth Is the Standard <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Presence Requires No Permission <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">We Don't Shrink Here <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Confidence Is Culture <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Built to Level <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Press Start Anyway <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Growth Is the Standard <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Presence Requires No Permission <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">We Don't Shrink Here <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Confidence Is Culture <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span> <span style="font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 28px">Built to Level <span style="color:rgba(255,255,255,.4);margin-left:28px">◆</span></span>
+  </div>
+</div>
+
+<!-- CHOOSE YOUR NEXT LEVEL -->
+<section class="section" id="choose">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <div class="eyebrow">Your Starting Point</div>
+      <span class="gold-line center"></span>
+      <h2 class="section-hed">Choose Your<br><em>Next Level.</em></h2>
+      <p class="body-copy" style="max-width:480px;margin:18px auto 0">Each destination is its own experience. Start anywhere. There are no wrong doors.</p>
+    </div>
+    <div class="card-grid cols-4" style="margin-top:52px">
+      <a href="mindset.html" class="card" data-reveal style="display:flex;flex-direction:column">
+        <div class="card-icon">🧠</div>
+        <div class="card-title">Mindset</div>
+        <div class="card-desc" style="flex:1">The inner work behind every outward step. Confidence, self-talk, and the thinking that shapes everything else.</div>
+        <span class="card-cta">Enter →</span>
+      </a>
+      <a href="lifestyle.html" class="card" data-reveal data-d="1" style="display:flex;flex-direction:column">
+        <div class="card-icon">🏡</div>
+        <div class="card-title">Lifestyle</div>
+        <div class="card-desc" style="flex:1">Intentional living. Systems, routines, motherhood, creativity — the everyday choices that build a life.</div>
+        <span class="card-cta">Enter →</span>
+      </a>
+      <a href="community.html" class="card" data-reveal data-d="2" style="display:flex;flex-direction:column">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Community</div>
+        <div class="card-desc" style="flex:1">The heart of The Level Up Culture. Find people committed to growing together.</div>
+        <span class="card-cta">Enter →</span>
+      </a>
+      <a href="collections.html" class="card" data-reveal data-d="3" style="display:flex;flex-direction:column">
+        <div class="card-icon">🛍</div>
+        <div class="card-title">Collections</div>
+        <div class="card-desc" style="flex:1">Lifestyle products inspired by intentional growth. Journals, apparel, and tools built to support the work.</div>
+        <span class="card-cta">Explore →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WE EXIST -->
+<section class="section alt" id="mission">
+  <div class="container" style="max-width:820px">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Our Mission</div>
+      <span class="gold-line"></span>
+      <h2 class="section-hed">Why We <em>Exist.</em></h2>
+    </div>
+    <p class="body-copy" data-reveal data-d="1" style="font-size:18px;line-height:1.9;border-left:3px solid var(--purple);padding-left:28px;margin-bottom:28px">The Level Up Culture exists to help people <strong style="color:var(--ivory);font-weight:700;font-style:normal">intentionally build lives they're proud of.</strong></p>
+    <p class="body-copy" data-reveal data-d="2">Not tips. Not trends. Not a highlight reel of someone else's life. A space where growth is the standard, confidence is built through action, and no one has to earn their place at the table. Mindset, lifestyle, creativity, community, gaming — every pillar of this brand is a different expression of the same mission. We're filling the gap where spaces once made people feel like they arrived too late, didn't belong, or had to justify their presence.</p>
+    <div data-reveal data-d="3" style="margin-top:36px">
+      <a href="#founder" class="btn btn-ghost">Read the Founder Story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND VALUES -->
+<section class="section" id="values">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <div class="eyebrow">What We Believe</div>
+      <span class="gold-line center"></span>
+      <h2 class="section-hed">Brand <em>Values.</em></h2>
+    </div>
+    <div class="card-grid cols-3" style="margin-top:48px;gap:16px">
+      <div class="card" data-reveal><div class="card-icon">⚡</div><div class="card-title">Confidence</div><div class="card-desc">Built through action, not waiting until you feel ready. Every step forward is evidence you can handle more than you thought.</div></div>
+      <div class="card" data-reveal data-d="1"><div class="card-icon">👁</div><div class="card-title">Visibility</div><div class="card-desc">Presence requires no permission. We center Black women at the heart of this brand — in every room, every goal, every season of becoming.</div></div>
+      <div class="card" data-reveal data-d="2"><div class="card-icon">🌱</div><div class="card-title">Growth</div><div class="card-desc">Progress over perfection. Your timeline belongs to you — not the internet, not the industry, not anyone's expectations.</div></div>
+      <div class="card" data-reveal data-d="1"><div class="card-icon">🪞</div><div class="card-title">Representation</div><div class="card-desc">When you see yourself reflected — really reflected, in any space you enter — something shifts. That's the work.</div></div>
+      <div class="card" data-reveal data-d="2"><div class="card-icon">💜</div><div class="card-title">Community</div><div class="card-desc">We don't shrink here. A space where shared experience creates connection — and connection builds something lasting.</div></div>
+      <div class="card" data-reveal data-d="3" style="background:rgba(110,68,255,.06);border-color:rgba(110,68,255,.2);display:flex;flex-direction:column;justify-content:center;text-align:center">
+        <div style="font-family:var(--font-b);font-size:18px;font-style:italic;color:var(--ivory);line-height:1.5">"Growth begins the moment you decide your future deserves your attention."</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:16px">The Level Up Culture</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section alt" id="founder">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+    <div>
+      <div data-reveal><div class="eyebrow">The Founder Story</div><span class="gold-line"></span></div>
+      <h2 class="section-hed" data-reveal data-d="1">Why I Built the Space<br><em>I Couldn't Find.</em></h2>
+      <div style="position:relative;margin-top:32px;border-radius:var(--r);overflow:hidden" data-reveal data-d="2">
+        <img src="https://i.imgur.com/FEqcSnu.jpeg" alt="Aliyah — Founder, The Level Up Culture" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,13,13,.92) 0%,transparent 100%);padding:28px 24px">
+          <p style="font-family:var(--font-b);font-size:15px;font-style:italic;color:var(--ivory);line-height:1.5">"This community didn't exist when I needed it. So I created it."</p>
+          <p style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:8px">Aliyah — Founder</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="body-copy" data-reveal data-d="1">
+        <p>Before any of this, I was a teacher. I spent my days helping other people believe they could grow, learn, and become more than they thought possible — and somewhere along the way I forgot to ask myself the same question.</p>
+        <p>I started gaming at 31. Wife. Mom of four boys. A full, busy, already-stretched life. I had no idea what I was doing. There was a moment — early on — when I almost quit. I felt out of place, behind, like I'd missed some invisible deadline for starting. That moment taught me more than any win ever did.</p>
+        <p>I didn't have everything figured out when I started this. I simply knew I wanted to build something worth showing up for.</p>
+        <p>I searched for a space where a Black woman like me — starting something new later, with a life already in motion — could belong without having to justify her presence. <strong style="color:var(--ivory);font-style:normal">I didn't find it. So I built it.</strong></p>
+        <p>Gaming was the doorway. Confidence, growth, and intentional living became the destination. The Level Up Culture grew into a space for mindset, lifestyle, creativity, community — and anyone who believes in building something worth being proud of.</p>
+      </div>
+      <div data-reveal data-d="2" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">
+        <span style="font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,164,77,.3);padding:6px 14px;border-radius:3px">Teacher</span>
+        <span style="font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,164,77,.3);padding:6px 14px;border-radius:3px">Wife</span>
+        <span style="font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,164,77,.3);padding:6px 14px;border-radius:3px">Mom of Four</span>
+        <span style="font-size:9.5px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,164,77,.3);padding:6px 14px;border-radius:3px">Builder</span>
+      </div>
+      <div data-reveal data-d="3" style="margin-top:36px;border-top:1px solid #1c1c1c;padding-top:32px">
+        <div style="font-size:15px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--purple);line-height:1.6">Press Start Anyway.</div>
+        <div style="font-size:15px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);line-height:1.6">Growth Is the Standard.</div>
+        <div style="font-size:15px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--ivory);line-height:1.6">Presence Requires No Permission.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PRINCIPLES -->
+<section class="section deep" id="principles">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <div class="eyebrow">What We Stand On</div>
+      <span class="gold-line center"></span>
+      <h2 class="section-hed">Our <em>Principles.</em></h2>
+    </div>
+    <div class="card-grid cols-3 principles-grid" style="margin-top:48px;max-width:900px;margin-inline:auto">
+      <div class="card" data-reveal style="text-align:center;padding:36px 24px"><div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:16px">01</div><div style="font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:var(--ivory);line-height:1.4">Growth Is the Standard.</div></div>
+      <div class="card" data-reveal data-d="1" style="text-align:center;padding:36px 24px"><div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:16px">02</div><div style="font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:var(--ivory);line-height:1.4">Presence Requires No Permission.</div></div>
+      <div class="card" data-reveal data-d="2" style="text-align:center;padding:36px 24px"><div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:16px">03</div><div style="font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:var(--ivory);line-height:1.4">Press Start Anyway.</div></div>
+      <div class="card" data-reveal data-d="1" style="text-align:center;padding:36px 24px"><div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:16px">04</div><div style="font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:var(--ivory);line-height:1.4">Confidence Is Built Through Action.</div></div>
+      <div class="card" data-reveal data-d="2" style="text-align:center;padding:36px 24px;grid-column:span 2"><div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:16px">05</div><div style="font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;color:var(--ivory);line-height:1.4">We Build the Space We Once Searched For.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="section alt" id="blog">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">The Blog</div>
+      <span class="gold-line"></span>
+      <h2 class="section-hed">Stories from<br><em>The Culture.</em></h2>
+    </div>
+    <div id="blogGrid" class="card-grid cols-3" style="margin-top:48px"></div>
+  </div>
+</section>
+
+<!-- THE FUTURE WE'RE BUILDING -->
+<section class="section" id="future">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <div class="eyebrow">The Roadmap</div>
+      <span class="gold-line center"></span>
+      <h2 class="section-hed">The Future<br>We're <em>Building.</em></h2>
+    </div>
+    <div class="card-grid cols-3" style="margin-top:48px">
+      <div class="card" data-reveal><div class="card-icon">🎬</div><div class="card-title">LUC Studio</div><div class="card-desc">Original content, media, and storytelling from the brand.</div><span class="status s-building" style="margin-top:16px;display:inline-block">Currently Building</span></div>
+      <div class="card" data-reveal data-d="1"><div class="card-icon">📓</div><div class="card-title">Foundation Collection</div><div class="card-desc">Journals, tools, and products designed to support intentional growth.</div><span class="status s-foundation" style="margin-top:16px;display:inline-block">Part of the Foundation Collection</span></div>
+      <div class="card" data-reveal data-d="2"><div class="card-icon">✉️</div><div class="card-title">Level Up Letter</div><div class="card-desc">A weekly note about growth, confidence, and building a life you're proud of.</div><span class="status s-growing" style="margin-top:16px;display:inline-block">Growing Every Week</span></div>
+      <div class="card" data-reveal><div class="card-icon">💜</div><div class="card-title">Community</div><div class="card-desc">Deeper spaces for connection, accountability, and shared growth.</div><span class="status s-building" style="margin-top:16px;display:inline-block">Currently Building</span></div>
+      <div class="card" data-reveal data-d="1"><div class="card-icon">🖥️</div><div class="card-title">Workspace</div><div class="card-desc">Tools and setups designed to support how you build and create.</div><span class="status s-launching" style="margin-top:16px;display:inline-block">Launching Soon</span></div>
+      <div class="card" data-reveal data-d="2"><div class="card-icon">📲</div><div class="card-title">Digital Products</div><div class="card-desc">Templates, guides, and resources for intentional living.</div><span class="status s-building" style="margin-top:16px;display:inline-block">Currently Building</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="join" style="text-align:center;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(110,68,255,.06) 0%,transparent 70%);pointer-events:none"></div>
+  <div class="container" style="position:relative;z-index:1;max-width:600px">
+    <div data-reveal><span class="tag">The Level Up Letter</span></div>
+    <h2 class="section-hed" data-reveal data-d="1" style="margin:24px 0 16px">Join the<br><em>Level Up Letter</em></h2>
+    <p class="body-copy" data-reveal data-d="2" style="margin-bottom:40px">A weekly note about intentional growth, confidence, creativity, and building a life you're proud of.</p>
+    <div data-reveal data-d="3"><div class="mc-wrap">
+  <div id="mc_embed_signup">
+    <form action="https://thelevelupculture.us10.list-manage.com/subscribe/post?u=8527366354aa3ad68c9fba045&amp;id=816c3702d1&amp;f_id=004cbce0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+      <div id="mc_embed_signup_scroll">
+        <div class="mc-field-group">
+          <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Your email address" aria-label="Email address">
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:-5000px;">
+          <input type="text" name="b_8527366354aa3ad68c9fba045_816c3702d1" tabindex="-1" value="">
+        </div>
+        <div class="optionalParent"><div class="foot">
+          <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Join Now &rarr;">
+        </div></div>
+      </div>
+    </form>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<!-- POST VIEW -->
+<div id="postView" style="display:none;position:fixed;inset:0;z-index:300;background:var(--black);overflow-y:auto;padding:100px 0 60px">
+  <div class="container" style="max-width:740px">
+    <button onclick="closePost()" style="background:none;border:none;color:var(--muted);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;margin-bottom:40px;display:flex;align-items:center;gap:8px">← Back to Blog</button>
+    <div id="postContent"></div>
+  </div>
+</div>
+
+<style>
+/* PRINCIPLES GRID MOBILE FIX */
+@media(max-width:768px){.principles-grid{grid-template-columns:1fr!important}.principles-grid .card{grid-column:span 1!important}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+#founder .container{grid-template-columns:1fr 1fr}
+@media(max-width:960px){#founder .container{grid-template-columns:1fr}}
+</style>
+
+<script>
+const posts = [
+    {
+      tag: 'Representation & Visibility',
+      title: 'We Built the Space We Couldn\'t Find',
+      meta: 'June 9, 2026 · By Aliyah',
+      emoji: '🎮',
+      body: `
+        <p>I looked for this community before I built it.</p>
+        <p>I searched for a space where a Black woman who started gaming at 31 — a mom of four with a full life already in motion — could belong without having to justify her presence.</p>
+        <p>I didn't find it. So I built it.</p>
+        <h2>This Is Not a Gaming Tips Brand</h2>
+        <p>The Level Up Culture is not here to teach you how to get better kill streaks or rank up faster. That's not the gap we're filling.</p>
+        <p>The gap we're filling is bigger than that. It's the one where Black women show up to gaming spaces and are made to feel like they arrived too late, don't belong, or have to earn their place.</p>
+        <div class="pull-quote">"It's the one where 'gamer' has a default image — and it doesn't look like us."</div>
+        <p>We're filling that gap.</p>
+        <h2>Why Gaming</h2>
+        <p>Because gaming is where I found something I didn't expect. I started playing at 31. I had no idea what I was doing. I felt out of place more than once. But I kept going.</p>
+        <p>And somewhere in the process of learning, failing, trying again, and showing up in spaces that weren't built for me — I grew. Not as a gamer. As a person.</p>
+        <p>That's what gaming gave me. Confidence built through action. Evidence that I could handle more than I thought. That story deserves to be told. And it deserves a community around it.</p>
+        <h2>Who This Is For</h2>
+        <p>This is for the woman who thinks she started too late. It's for the mom who games after the kids go to bed and wonders if that counts. It's for the Black woman who has stood at the edge of a gaming space and felt like she had to ask permission to walk in.</p>
+        <p>You don't. You never did.</p>
+        <h2>Press Start Anyway</h2>
+        <p>You don't need permission to begin. You don't need to have it figured out. You don't need to have been here from the start.</p>
+        <p>The Level Up Culture exists because one woman decided to take up space before she felt ready — and realized that was the whole move.</p>
+        <p>Now we're building something bigger than one story. We're building a culture.</p>
+        <p><strong>Welcome. Press Start Anyway. Growth Is the Standard. Presence Requires No Permission.</strong></p>
+      `
+    },
+    {
+      tag: 'Beginner Gaming Journey',
+      title: 'Oh! She\'s New, New.',
+      meta: 'June 24, 2026 · By Aliyah',
+      emoji: '🎮',
+      body: `
+        <p>Four words. That's all it took.</p>
+        <p>"Oh! She's new, new."</p>
+        <p>I was in the middle of an ARC Raiders session when it happened. My team was moving through the map together — and I accidentally fired at one of our own group members.</p>
+        <p>It wasn't malicious. It wasn't strategic. I genuinely did not realize what I was doing in time to stop it.</p>
+        <p>And someone in the lobby announced it to everyone like a public service announcement.</p>
+        <div class="pull-quote">"Oh! She's new, new."</div>
+        <p>Not just new. <em>New, new.</em> The kind of new that gets its own emphasis. The kind of new that makes the whole lobby pause.</p>
+        <h2>What That Moment Felt Like</h2>
+        <p>Honest answer? It stung for a second. There's something about being called out in a space you're still trying to find your footing in that hits different.</p>
+        <p>It wasn't mean-spirited. Nobody came for me. But that moment crystallized something I had been feeling since I started — the awareness that everyone else seemed to know something I didn't. That I was visibly, undeniably, a beginner.</p>
+        <p>For a split second I wanted to log off. Close the game. Quietly disappear.</p>
+        <h2>But I Didn't.</h2>
+        <p>Because my husband was right there. Cheering me on. Guiding me through the map, through my frustration, through the moment I almost gave up. He didn't make me feel small. He made me feel like I was exactly where I was supposed to be — just learning.</p>
+        <p>And that changed everything.</p>
+        <p>I stayed in the game. I kept moving. And by the end of that session I had learned more about how to play than I had in any session before it — partly because I was embarrassed enough to pay attention.</p>
+        <h2>What Being "New, New" Actually Means</h2>
+        <p>Here's what I've come to understand: every single person who has ever been good at something was once new, new.</p>
+        <p>Every skilled player you admire. Every streamer with thousands of followers. Every person who seems completely at home in a gaming space — they all had a moment where they didn't know what they were doing. Where they fired at the wrong person. Where someone could have clocked them as a beginner.</p>
+        <p>The difference between them and the people who quit is simple. They stayed anyway.</p>
+        <div class="pull-quote">"Being new is not a permanent condition. It's a starting point."</div>
+        <h2>This Is for Every Woman Who Has Been Called Out</h2>
+        <p>If you've ever been in a space — gaming or otherwise — where someone made you feel like you didn't belong yet, this is for you.</p>
+        <p>You don't have to be polished to show up. You don't have to be experienced to take up space. You don't have to pretend you know more than you do.</p>
+        <p>You just have to stay in the game.</p>
+        <p>I'm still here. Still learning. Still occasionally firing at the wrong person.</p>
+        <p>And I would not trade a single moment of it.</p>
+        <p><strong>Press Start Anyway. Even when — especially when — everyone can tell you're new, new.</strong></p>
+      `
+    },
+    {
+      tag: 'Confidence & Mindset',
+      title: 'You Don\'t Have to Feel Ready. You Just Have to Press Start.',
+      meta: 'June 24, 2026 · By Aliyah',
+      emoji: '💜',
+      body: `
+        <p>I used to think confidence was something you had before you started.</p>
+        <p>Like it was a requirement. A prerequisite. Something you were supposed to already possess before you walked into a new space, tried a new thing, or picked up a controller for the first time at 31.</p>
+        <p>I was wrong.</p>
+        <h2>What Gaming Taught Me About Confidence</h2>
+        <p>When I started gaming, I was not confident. Not even a little. I was a mom of four jumping into worlds that felt completely foreign to me — Palia, Hogwarts Legacy, Halo, ARC Raiders, Crysis Remastered. Each one a new language I had to learn from scratch.</p>
+        <p>I didn't know the controls. I didn't know the culture. I didn't know the terminology. I made mistakes that probably made other players cringe. I asked questions that probably seemed obvious to everyone else.</p>
+        <p>But I kept going.</p>
+        <div class="pull-quote">"Confidence isn't what gets you in the door. Action is what gets you in the door. Confidence is what you find on the other side."</div>
+        <h2>The Unexpected Skill I Built</h2>
+        <p>Here's something nobody tells you about gaming: it builds real, transferable skills.</p>
+        <p>As a mom of four boys I already multitasked at a level most people can't imagine. But gaming leveled that up in ways I didn't expect. Tracking multiple threats on a screen. Making split-second decisions. Managing resources while staying aware of everything happening around you.</p>
+        <p>I got better at multitasking — not just in games, but in life. I got faster at processing information. More comfortable making decisions under pressure. More willing to try something I might fail at, because I had learned that failure in a game just means you try the level again.</p>
+        <p>That mindset doesn't stay in the game. It follows you.</p>
+        <h2>The Before and After</h2>
+        <p>Before gaming I was someone who waited until she felt ready before she started something new.</p>
+        <p>After gaming I am someone who understands that ready is not a feeling you wait for. It's a feeling you build — by starting before you have it.</p>
+        <p>The woman I am now is more confident, more decisive, more willing to be a beginner in public. Not because gaming made me fearless. But because it gave me evidence — real, lived, personal evidence — that I could walk into something unfamiliar and come out the other side stronger.</p>
+        <h2>This Is What Growth Looks Like</h2>
+        <p>Growth is not linear. It's not pretty. It's accidentally shooting your teammate in ARC Raiders and hearing someone announce to the lobby that you're new, new — and staying in the game anyway.</p>
+        <p>It's your husband cheering you on when you want to quit. It's picking the controller back up after a frustrating session. It's choosing to keep going when every instinct tells you that you're not ready yet.</p>
+        <p>You will never feel completely ready. That feeling doesn't come first.</p>
+        <p>But the confidence? It comes. I promise you it comes.</p>
+        <p>It comes every time you press start anyway.</p>
+        <p><strong>Growth Is the Standard. Presence Requires No Permission. Press Start Anyway.</strong></p>
+      `
+    },
+    {
+      tag: 'Mom Gamer Lifestyle',
+      title: 'Gaming After the Kids Go to Bed (And Why That Counts)',
+      meta: 'June 24, 2026 · By Aliyah',
+      emoji: '👑',
+      body: `
+        <p>The house gets quiet.</p>
+        <p>Four boys, finally asleep. The day — with everything it carried — is done. And for the first time in hours, it's just me.</p>
+        <p>I pick up the controller.</p>
+        <h2>This Is My Time</h2>
+        <p>I want to talk to every mom who games after the kids go to bed and wonders if it counts. Who squeezes in thirty minutes between bedtime and exhaustion and thinks — is this even worth it? Am I doing this right? Should I be doing something more productive?</p>
+        <p>Let me be direct: yes, it counts. It counts completely. And you don't owe anyone an explanation for it.</p>
+        <div class="pull-quote">"Reclaiming something just for yourself is not selfish. It is necessary."</div>
+        <h2>What My Husband Showed Me</h2>
+        <p>When I started gaming I didn't expect my husband to become one of my biggest supporters in it. But he did — genuinely, enthusiastically, without hesitation.</p>
+        <p>When I was frustrated he guided me through it. When I wanted to quit he cheered me on. When I made mistakes — and I made plenty — he didn't make me feel small. He made me feel like I was exactly where I was supposed to be.</p>
+        <p>There is something powerful about a partner who sees you trying something new and shows up for it. Who treats your hobby like it matters. Who sits beside you and says keep going even when you've just accidentally shot at your own teammate for the third time.</p>
+        <p>Gaming became something we share. A language between us. A way of connecting that neither of us expected when I first picked up a controller at 31.</p>
+        <h2>The Games That Started It All</h2>
+        <p>I didn't start with one game. I started with five.</p>
+        <p>Palia — gentle, community-driven, the kind of game that eases you in without punishing you for being new. Hogwarts Legacy — story-rich and visually stunning, perfect for someone who wanted to feel immersed before she felt competitive. Halo — my first real introduction to what a shooter actually feels like. ARC Raiders — where I learned the hard way what friendly fire means. And Crysis Remastered — where I realized I had come further than I thought.</p>
+        <p>Each game taught me something different. Not just about gaming — about myself.</p>
+        <h2>For the Mom Reading This at 11pm</h2>
+        <p>You just put the kids to bed. You have maybe an hour before you need to sleep yourself. And part of you is wondering if this — this small quiet thing you do just for you — is worth protecting.</p>
+        <p>It is.</p>
+        <p>Not because gaming is inherently important. But because <em>you</em> are. Because having something that belongs to you — that isn't about anyone else's needs, schedules, or feelings — is not a luxury. It's part of what keeps you whole.</p>
+        <p>Game after the kids go to bed. Game during nap time. Game for thirty minutes or three hours. Game badly. Game loudly. Game in peace.</p>
+        <p>It counts. You count. And this community was built for exactly this moment.</p>
+        <p><strong>Welcome. Press Start Anyway. We don't shrink here.</strong></p>
+      `
+    }
+  ];
+
+function renderBlog(){
+  const g=document.getElementById('blogGrid');
+  if(!g)return;
+  g.innerHTML=posts.slice(0,3).map((p,i)=>`
+    <div class="card" style="cursor:pointer;display:flex;flex-direction:column" onclick="openPost(${i})" data-reveal data-d="${i}">
+      <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px">${p.category} · ${p.date}</div>
+      <div style="font-size:16px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase;color:var(--ivory);line-height:1.3;margin-bottom:12px;flex:1">${p.title}</div>
+      <div style="font-family:var(--font-b);font-size:13px;line-height:1.65;color:var(--muted);margin-bottom:18px">${p.excerpt}</div>
+      <span style="font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple)">Read →</span>
+    </div>`).join('');
+  document.querySelectorAll('#blogGrid [data-reveal]').forEach(el=>obs2.observe(el));
+}
+const obs2=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs2.unobserve(x.target);}}),{threshold:.08});
+renderBlog();
+
+function openPost(i){
+  const p=posts[i];
+  document.getElementById('postContent').innerHTML=`
+    <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px">${p.category} · ${p.date}</div>
+    <h1 style="font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:1.1;margin-bottom:28px;color:var(--ivory)">${p.title}</h1>
+    <div style="font-family:var(--font-b);font-size:17px;line-height:1.9;color:rgba(248,246,242,.78)">${p.content}</div>`;
+  document.getElementById('postView').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closePost(){
+  document.getElementById('postView').style.display='none';
+  document.body.style.overflow='';
+}
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">The Level Up Culture<span>Growth Is the Standard</span></div>
+        <p class="footer-tagline">A lifestyle brand built on confidence, growth, and community — rooted in the lived experience of a Black woman who built the space she once searched for.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/thelevelupculture/" target="_blank" class="social-pill">Instagram</a>
+          <a href="https://www.youtube.com/@Thelevelupculture" target="_blank" class="social-pill">YouTube</a>
+          <a href="https://www.facebook.com/thelevelupculture" target="_blank" class="social-pill">Facebook</a>
+          <a href="https://discord.gg/ZDWzYahgC" target="_blank" class="social-pill">Discord</a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <div class="footer-col-title">Ecosystem</div>
+          <div class="footer-links">
+            <a href="mindset.html">Mindset</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a href="community.html">Community</a>
+            <a href="collections.html">Collections</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Brand</div>
+          <div class="footer-links">
+            <a href="index.html#mission">Our Mission</a>
+            <a href="index.html#principles">Our Principles</a>
+            <a href="index.html#founder">Founder Story</a>
+            <a href="index.html#blog">Blog</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <div class="footer-links">
+            <a href="https://discord.gg/ZDWzYahgC" target="_blank">Discord</a>
+            <a href="community.html#join">Newsletter</a>
+            <a href="https://www.youtube.com/@Thelevelupculture" target="_blank">YouTube</a>
+            <a href="mailto:hello@thelevelupculture.com">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 The Level Up Culture. All rights reserved.</p>
+      <div class="footer-mantras">
+        <span>Growth Is the Standard.</span>
+        <span>Presence Requires No Permission.</span>
+        <span>Press Start Anyway.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('[data-reveal]').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

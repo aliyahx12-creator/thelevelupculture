@@ -1,60 +1,28 @@
-"""
-Fix script for The Level Up Culture - index.html mobile bug
-Run from inside the thelevelupculture folder:
-  python fix_index.py
-"""
-import os, sys
 
-# Get the directory this script lives in
+import urllib.request, os
+
+url = "https://raw.githubusercontent.com/aliyahx12-creator/thelevelupculture/8052601eaf1b9634f4e9bb991a19c18379569ed8/index.html"
 here = os.path.dirname(os.path.abspath(__file__))
-index_path = os.path.join(here, "index.html")
+path = os.path.join(here, "index.html")
 
-print(f"Reading: {index_path}")
+print("Fetching good version from GitHub history...")
+with urllib.request.urlopen(url) as r:
+    content = r.read().decode('utf-8')
+print(f"Got {len(content)} chars")
 
-with open(index_path, 'r', encoding='utf-8') as f:
-    content = f.read()
+# Add principles-grid class
+content = content.replace(
+    'class="card-grid cols-3" style="margin-top:48px;max-width:900px;margin-inline:auto"',
+    'class="card-grid cols-3 principles-grid" style="margin-top:48px;max-width:900px;margin-inline:auto"'
+)
 
-print(f"File size: {len(content)} chars")
+# Add mobile CSS fix
+fix_css = '\n/* PRINCIPLES GRID MOBILE FIX */\n@media(max-width:768px){.principles-grid{grid-template-columns:1fr!important}.principles-grid .card{grid-column:span 1!important}}\n'
+content = content.replace('<style>\n@keyframes marquee', '<style>' + fix_css + '@keyframes marquee')
 
-if len(content) < 1000:
-    print("ERROR: File is too small - it's been overwritten with a stub.")
-    print("Please restore index.html from GitHub history first.")
-    input("Press Enter to close...")
-    sys.exit(1)
+with open(path, 'w', encoding='utf-8') as f:
+    f.write(content)
 
-changed = False
-
-# Fix 1: Add principles-grid class
-old1 = 'class="card-grid cols-3" style="margin-top:48px;max-width:900px;margin-inline:auto"'
-new1 = 'class="card-grid cols-3 principles-grid" style="margin-top:48px;max-width:900px;margin-inline:auto"'
-if old1 in content:
-    content = content.replace(old1, new1)
-    print("Fix 1 applied: principles-grid class added")
-    changed = True
-elif 'principles-grid' in content:
-    print("Fix 1 already applied")
-else:
-    print("WARNING: Could not find principles grid element")
-
-# Fix 2: Add mobile CSS
-fix_css = '@media(max-width:768px){.principles-grid{grid-template-columns:1fr!important}}'
-if fix_css not in content:
-    last_style = content.rfind('</style>')
-    if last_style != -1:
-        content = content[:last_style] + '\n' + fix_css + '\n' + content[last_style:]
-        print("Fix 2 applied: mobile CSS added")
-        changed = True
-    else:
-        print("ERROR: Could not find </style> tag")
-else:
-    print("Fix 2 already applied")
-
-if changed:
-    with open(index_path, 'w', encoding='utf-8') as f:
-        f.write(content)
-    print(f"\nSUCCESS! File saved ({len(content)} chars)")
-    print("Now open GitHub Desktop, commit and push.")
-else:
-    print("\nNo changes needed.")
-
+print(f"SUCCESS! Wrote {len(content)} chars to index.html")
+print("Now open GitHub Desktop, commit and push.")
 input("Press Enter to close...")
